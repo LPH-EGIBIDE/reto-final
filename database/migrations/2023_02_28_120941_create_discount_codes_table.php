@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('code');
             $table->integer('uses_left');
             $table->integer('value');
-            $table->string('value_type');
-            $table->string('type');
+            $table->enum('value_type', ['percent', 'amount']);
+            $table->string('description');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
