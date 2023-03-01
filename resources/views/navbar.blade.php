@@ -1,7 +1,7 @@
 <header>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg py-3 navbar-light bg-light">
         <!-- Container wrapper -->
         <div class="container-fluid">
             <!-- Toggle button -->
@@ -11,8 +11,9 @@
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                    <img src="{{Vite::asset('resources/images/logo_egibide.png')}}" height="30" alt="" loading="lazy" />
+                <a class="navbar-brand mt-2 mt-lg-0 d-none d-lg-block" href="#">
+                    <!-- Image Logo -->
+                    <img src="{{Vite::asset('resources/images/logo_egibide.png')}}" height="42" alt="" loading="lazy" />
                 </a>
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -30,15 +31,15 @@
             </div>
             <!-- Collapsible wrapper -->
             <!-- Right elements -->
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center justify-content-end col">
                 <!-- Icon -->
                 <a class="text-reset me-3" href="#">
-                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-shopping-cart fs-4" ></i>
                 </a>
                 <!-- Notifications -->
                 <div class="dropdown">
                     <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-bell"></i>
+                        <i class="fas fa-bell fs-4"></i>
                         <span class="badge rounded-pill badge-notification bg-danger">1</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
@@ -56,7 +57,8 @@
                 <!-- Avatar -->
                 <div class="dropdown">
                     <a class="drop down-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                        <img src="{{Vite::asset('resources/images/avatar_prueba.jpg')}}" class="rounded-circle" height="22" alt="" loading="lazy" />
+                        <!-- Avatar -->
+                        <img src="{{Vite::asset('resources/images/avatar_prueba.jpg')}}" class="rounded-circle" height="42" alt="" loading="lazy" />
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                         <li>
