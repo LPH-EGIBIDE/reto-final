@@ -9,3 +9,7 @@
     <h1>AQUI LO BONITO</h1>
 
 @endsection
+
+@section('footer')
+    @include('footer')
+@endsection
