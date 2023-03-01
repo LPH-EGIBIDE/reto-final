@@ -1,0 +1,28 @@
+// Custom styles for navbar
+nav {
+    background-color: $background-color;
+    .navbar-brand {
+        color: $primary-color;
+        font-size: 2rem;
+        font-weight: bold;
+        &:hover {
+            color: $primary-color;
+        }
+    }
+    .nav-item {
+        margin-right: 20px;
+        .nav-link {
+            color: $secondary-color;
+            font-size: 1.2rem;
+            &:hover {
+                color: $primary-color;
+            }
+        }
+        &.active {
+            .nav-link {
+                color: $primary-color;
+                font-weight: bold;
+            }
+        }
+    }
+}
