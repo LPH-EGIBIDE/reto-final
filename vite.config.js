@@ -6,9 +6,17 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/sass/app.scss',
+                'resources/css/app.css',
                 'resources/js/app.js',
             ],
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+            // this is required for the SCSS modules
+            find: /^~(.*)$/,
+            replacement: '$1',
+        }
+    }
 });

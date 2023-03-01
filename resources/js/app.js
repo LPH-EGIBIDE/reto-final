@@ -1,1 +1,1 @@
-import './bootstrap';
+import * as mdb from 'mdb-ui-kit'; // lib
