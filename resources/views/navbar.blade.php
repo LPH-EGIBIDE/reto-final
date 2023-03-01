@@ -12,7 +12,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
                 <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                    <!--Imagen -->
+                    <img src="{{Vite::asset('resources/images/logo_egibide.png')}}" height="30" alt="" loading="lazy" />
                 </a>
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -56,7 +56,7 @@
                 <!-- Avatar -->
                 <div class="dropdown">
                     <a class="drop down-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                        <!--Imagen -->
+                        <img src="{{Vite::asset('resources/images/avatar_prueba.jpg')}}" class="rounded-circle" height="22" alt="" loading="lazy" />
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                         <li>
