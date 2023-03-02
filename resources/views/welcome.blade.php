@@ -34,11 +34,11 @@
         <div class="col">
             <div class="row">
                 @for($i=0; $i < 2; $i++)
-                    @include('product.tile')
+                    @include('products.tile')
                 @endfor
             </div>
 
-    </div>
+        </div>
     </div>
 @endsection
 
