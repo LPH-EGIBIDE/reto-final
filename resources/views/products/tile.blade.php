@@ -6,8 +6,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
-                                <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                                    <img src="https://4.bp.blogspot.com/-OSKvnImc-OU/WVfq5KOnnGI/AAAAAAAAOQo/8_20PwUnUFwWBWtJwLt3gxWrNSLQIGO7ACLcBGAs/s1600/Tarta-tres-chocolates-1.JPG" class="w-75" />
+                                <div class="bg-image hover-zoom ripple rounded ripple-surface d-md-flex justify-content-md-center">
+                                    <img src="/attachments/1/342/385"  class="d-none d-md-block img-fluid"/>
+                                    <img src="/attachments/1/684/771"  class="d-block d-md-none img-fluid"/>
                                     <a href="#">
                                         <div class="hover-overlay">
                                             <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>

@@ -20,7 +20,7 @@
     <div class="row mt-3">
         <h4>Categorias</h4>
         <hr>
-        <div class="col-12  col-md-10 offset-md-1">
+        <div class="col-12 col-md-10 offset-md-1">
             <div class="row">
                 @for($i=0; $i < 6; $i++)
                     @include('categories.tile')

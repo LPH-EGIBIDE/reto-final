@@ -1,4 +1,4 @@
-<div class="col-6 col-md-5 col-lg-4 mb-4">
+<div class="col-6 col-lg-4 mb-4">
     <a href="#">
         <div class="category-card position-relative hover-shadow shadow-card">
             <img src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" class="img-fluid rounded" alt="...">
