@@ -1,4 +1,4 @@
-<footer class="fixed-bottom bg-dark text-center text-white">
+<footer class=" bg-dark text-center text-white">
     <div class="pt-3">
         <span class="border-top border-bottom pt-1 pb-1">ESCUELA DE HOSTELERÍA DE EGIBIDE MENDIZORROTZA</span>
     </div>

@@ -17,14 +17,13 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss','resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-vh-100">
-    <div id="app container">
+<body class="d-flex flex-column vh-100">
+@yield('navbar')
+    <div id="app" class="container mb-auto">
 
-        @yield('navbar')
+        @yield('content')
 
-        <main>
-            @yield('content')
-        </main>
+
     </div>
     @yield('footer')
 </body>
