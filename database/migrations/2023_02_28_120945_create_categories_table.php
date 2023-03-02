@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->boolean('is_homepage')->default(false);
+            $table->foreignId('attachment_id')->constrained('attachments')->cascadeOnDelete();
             $table->timestamps();
         });
     }
