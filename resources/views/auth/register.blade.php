@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="row d-flex align-items-center justify-content-center ">
+    <div class="row d-flex align-items-center justify-content-center mb-5">
         <div class="col-lg-6 mx-auto mt-2">
             <div class="errors mb-3">
                 @if($errors->any())
@@ -53,7 +53,7 @@
                         <div class="form-group mb-2">
                             <div class="row">
                                 <div class="col-md-6 offset-md-6">
-                                    <button class="btn btn-success form-control" style="background-color: #1a459a; border-color: transparent;">Registrarse <i class="fas fa-chevron-right"></i></button>
+                                    <button class="btn btn-primary form-control" >Registrarse <i class="fas fa-chevron-right"></i></button>
                                 </div>
 
                             </div>
