@@ -17,13 +17,12 @@ class Product extends Model
         'price',
         'stock',
         'image',
-        'category_id',
         'is_active',
     ];
 
-    public function category():BelongsTo
+    public function categories():HasMany
     {
-        return $this->belongsTo(Category::class);
+        return $this->hasMany(ProductCategories::class);
     }
 
     public function orderDetails():HasMany

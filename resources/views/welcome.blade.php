@@ -6,36 +6,41 @@
 
 @section('content')
     <div class="row">
-        <div class="p-5 text-center bg-image col-12"
-             style="background-image: url('https://www.bdpcenter.com/wp-content/uploads/2022/02/hosteleria-8.jpg?x18539'); height: 350px;">
-            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-                <div class="d-flex justify-content-center align-items-center h-100">
-                    <div class="text-white">
-                        <h2 class="mb-5 display-1 fs-1">Escuela de hosteleria - Egibide</h2>
+        <section class="col mb-10">
+            <div class="p-5 text-center bg-image jumbotron-home"></div>
+            <div class="container">
+                <div class="card mx-1 mx-md-5 text-center shadow-5-strong jumbotron-home-card">
+                    <div class="card-body px-4 py-5 px-md-5">
+                        <h1 class="display-3 fw-bold ls-tight mb-4">
+                            <span>Escuela de hostelería</span>
+                            <br>
+                            <span class="text-primary">EGIBIDE</span>
+                        </h1>
+                        <a class="btn btn-primary btn-lg py-3 px-5 mb-2 mb-md-0 me-md-2" href="#categorias" role="button"  style="min-width: auto;"><i class="fa-solid fa-cart-shopping"></i> Realizar pedido</a>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-    <div class="row mt-3">
-        <h4>Categorias</h4>
+    <div class="row mt-3" id="categorias">
+        <h3 class="text-primary">Categorias</h3>
         <hr>
         <div class="col-12 col-md-10 offset-md-1">
             <div class="row">
-                @for($i=0; $i < 6; $i++)
-                    @include('categories.tile')
-                @endfor
+                @foreach($categories as $category)
+                    @include('categories.tile', ['category' => $category])
+                @endforeach
             </div>
         </div>
     </div>
     <div class="row mt-3">
-        <h4>Productos Destacados</h4>
+        <h3 class="text-primary">Productos Destacados</h3>
         <hr>
         <div class="col">
             <div class="row">
-                @for($i=0; $i < 2; $i++)
-                    @include('products.tile')
-                @endfor
+                @foreach($products as $product)
+                    @include('products.tile', ['product' => $product])
+                @endforeach
             </div>
 
         </div>
