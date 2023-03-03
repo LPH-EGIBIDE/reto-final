@@ -7,8 +7,8 @@
                         <div class="row">
                             <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                                 <div class="bg-image hover-zoom ripple rounded ripple-surface d-md-flex justify-content-md-center">
-                                    <img src="/attachments/1/342/385"  class="d-none d-md-block img-fluid"/>
-                                    <img src="/attachments/1/684/771"  class="d-block d-md-none img-fluid"/>
+                                    <img src="{{route('attachment.show.custom', [$product->image, '342', '385'])}}"  class="d-none d-md-block img-fluid"/>
+                                    <img src="{{route('attachment.show.custom', [$product->image, '684', '711'])}}"  class="d-block d-md-none img-fluid"/>
                                     <a href="#">
                                         <div class="hover-overlay">
                                             <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
@@ -17,17 +17,22 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-6 col-xl-6">
-                                <h5>Tarta 3 chocolates</h5>
-                                <div class="mb-2 text-muted small">
+                                <h5>{{$product->name}}</h5>
+
                                     <!--Categorias -->
-                                    <span class="text-primary"> • </span>
-                                    <span>Postre<br /></span>
-                                </div>
-                                <p class=" mb-4 mb-md-0">Tarta 3 chocolates con una base de galleta triturada y 3 capas de disitintos chocolates, blaco, con leche y negro</p>
+
+                                    @foreach($product->categories as $product_category)
+                                    <div class="mb-2 text-muted small">
+                                        <span class="text-primary"> • </span>
+                                        <span>{{$product_category->category->name}}<br /></span>
+                                    </div>
+                                    @endforeach
+
+                                <p class=" mb-4 mb-md-0">{{$product->description}}</p>
                             </div>
                             <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
                                 <div class="d-flex flex-row align-items-center mb-1">
-                                    <h4 class="mb-1 me-1">$13.99</h4>
+                                    <h4 class="mb-1 me-1">€{{$product->price}}</h4>
                                 </div>
                                 <div class="d-flex flex-column mt-4">
                                     <a href="#" class="btn btn-primary btn-sm">Detalles</a>
