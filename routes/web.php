@@ -22,6 +22,10 @@ Route::get('/producto', function () {
     return view('products.show');
 });
 
+Route::get('/carrito', function () {
+    return view('cart.show');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
