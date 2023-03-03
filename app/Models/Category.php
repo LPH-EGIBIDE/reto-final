@@ -17,9 +17,10 @@ class Category extends Model
         'is_active',
     ];
 
-    public function products():HasMany
+    public function product():HasMany
     {
-        return $this->hasMany(Product::class);
+        //get all products that belong to this category using the product_categories pivot table
+        return $this->hasMany(ProductCategories::class);
     }
 
 
