@@ -31,4 +31,10 @@ Route::middleware(['auth', 'can:is-admin'])->group(function () {
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin.admin');
     Route::get('/attachments/upload', [App\Http\Controllers\AttachmentController::class, 'create'])->name('attachment.create');
     Route::post('/attachments', [App\Http\Controllers\AttachmentController::class, 'upload'])->name('attachment.upload');
+    Route::get('/producto/registrar', [App\Http\Controllers\ProductController::class, 'create'])->name('admin.product.create');
+    Route::get('/producto/editar', [App\Http\Controllers\ProductController::class, 'edit'])->name('admin.product.edit');
+    Route::get('/producto/ver', [App\Http\Controllers\ProductController::class, 'show'])->name('admin.product.show');
+    Route::get('categoria/registrar', [App\Http\Controllers\CategoryController::class, 'create'])->name('admin.category.create');
+    Route::get('categoria/editar', [App\Http\Controllers\CategoryController::class, 'edit'])->name('admin.category.edit');
+    Route::get('categoria/ver', [App\Http\Controllers\CategoryController::class, 'show'])->name('admin.category.show');
 });

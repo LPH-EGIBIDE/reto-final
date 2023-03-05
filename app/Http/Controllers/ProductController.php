@@ -21,6 +21,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+        return view('admin.product.create');
     }
 
     /**
@@ -36,7 +37,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+
+        return view('admin.product.show');
     }
 
     /**
@@ -45,6 +47,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
+        return view('admin.product.edit');
     }
 
     /**
