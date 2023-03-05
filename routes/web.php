@@ -28,7 +28,7 @@ Route::get('/attachments/{id}/{width}/{height}', [App\Http\Controllers\Attachmen
 
 
 Route::middleware(['auth', 'can:is-admin'])->group(function () {
-
+    Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin.admin');
     Route::get('/attachments/upload', [App\Http\Controllers\AttachmentController::class, 'create'])->name('attachment.create');
     Route::post('/attachments', [App\Http\Controllers\AttachmentController::class, 'upload'])->name('attachment.upload');
 });
