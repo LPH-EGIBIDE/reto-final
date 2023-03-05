@@ -21,8 +21,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-outline">
-                                <input type="text" id="price" class="form-control" required />
-                                <label class="form-label" for="price">Precio</label>
+                                <input type="text" id="productPrice" class="form-control" required />
+                                <label class="form-label" for="productPrice">Precio</label>
                             </div>
                         </div>
                     </div>
@@ -45,18 +45,23 @@
                     <div class="row mb-4">
                         <div class="col-md-6  mb-2 mb-md-0">
                             <div class="form-outline">
-                                <input type="number" id="stock" class="form-control" required />
-                                <label class="form-label" for="stock">Stock</label>
+                                <input type="number" id="productStock" class="form-control" required />
+                                <label class="form-label" for="productStock">Stock</label>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-outline">
-                                <select class="form-select" id="category" aria-label="Default select example">
-                                    <option selected>Selecciona la categoria</option>
+                            <div class="">
+                                <select class="select" id="productCategory" multiple>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>
+                                    <option value="4">Four</option>
+                                    <option value="5">Five</option>
+                                    <option value="6">Six</option>
+                                    <option value="7">Seven</option>
+                                    <option value="8">Eight</option>
                                 </select>
+                                <label class="form-label select-label">Categoria</label>
                             </div>
                         </div>
                     </div>

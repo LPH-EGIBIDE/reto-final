@@ -5,8 +5,8 @@
 @endsection
 @section('content')
 
-    <div class="row mb-4">
-            <div class="card col-12 col-md-6 my-3">
+    <div class="row mb-4 justify-content-evenly">
+            <div class="card col-12 col-md-5 my-3">
                 <div class="card-header d-flex align-items-center mt-2 ">
                     <span class="card-title text-primary m-0 fs-2 fw-bold">Ficha de administrador</span>
                 </div>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card col-md-6 my-3">
+            <div class="card col-md-5 my-3">
                 <div class="card-header d-flex align-items-center mt-2 ">
                     <span class="card-title text-primary m-0 fs-2 fw-bold">Pedidos Semanales</span>
                 </div>
@@ -45,7 +45,6 @@
                 </div>
             </div>
     </div>
-
 @endsection
 
 @section('footer')

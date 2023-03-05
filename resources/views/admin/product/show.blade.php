@@ -62,7 +62,7 @@
                     <div class="row mb-4">
                         <div class="col-md-12">
                             <div class="d-flex justify-content-center">
-                                <a href="{{ route('admin.product.edit') }}" class="btn btn-primary">Editar</a>
+                                <a href="{{ route('admin.product.edit', '2') }}" class="btn btn-primary">Editar</a>
                             </div>
                         </div>
                     </div>

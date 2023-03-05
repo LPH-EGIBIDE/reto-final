@@ -29,7 +29,7 @@
                     <div class="row mb-4">
                         <div class="col-md-12">
                             <div class="d-flex justify-content-center">
-                                <a href="{{ route('admin.category.edit') }}" class="btn btn-primary">Editar</a>
+                                <a href="{{ route('admin.category.edit', '1') }}" class="btn btn-primary">Editar</a>
                             </div>
                         </div>
                     </div>

@@ -21,6 +21,7 @@ class DiscountCodeController extends Controller
     public function create()
     {
         //
+        return view('admin.discount.create');
     }
 
     /**
@@ -37,6 +38,7 @@ class DiscountCodeController extends Controller
     public function show(DiscountCode $discountCode)
     {
         //
+        return view('admin.discount.show', compact('discountCode'));
     }
 
     /**
@@ -45,6 +47,7 @@ class DiscountCodeController extends Controller
     public function edit(DiscountCode $discountCode)
     {
         //
+        return view('admin.discount.edit', compact('discountCode'));
     }
 
     /**

@@ -37,7 +37,7 @@ Route::middleware(['auth', 'can:is-admin'])->group(function () {
     //<editor-fold desc="Rutas Productos">
     Route::get('/producto/registrar', [App\Http\Controllers\ProductController::class, 'create'])->name('admin.product.create');
     Route::post('/producto/registrar', [App\Http\Controllers\ProductController::class, 'store'])->name('admin.product.store');
-    Route::get('/producto/editar/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('admin.product.edit');
+     Route::get('/producto/editar/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('admin.product.edit');
     Route::put('/producto/editar/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('admin.product.update');
     Route::get('/producto/ver/{id}', [App\Http\Controllers\ProductController::class, 'show'])->name('admin.product.show');
     Route::delete('/producto/eliminar/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('admin.product.destroy');
