@@ -108,4 +108,42 @@ class CategoryController extends Controller
         return redirect()->route('admin.category.index');
 
     }
+
+    public function  adminIndex()
+    {
+        return view('admin.category.index');
+    }
+    public function filter(Request $request)
+    {
+        $request->validate([
+            'page' => 'nullable|integer',
+            'filtro' => 'nullable|string|max:255',
+        ]);
+
+        $page = $request->page ?? 1;
+        $perPage = 10;
+        $offset = ($page - 1) * $perPage;
+
+        $categorias = Category::where('name', 'like', '%'.$request->filtro.'%');
+        $total = $categorias->count();
+        $categorias = $categorias->offset($offset)->limit($perPage)->select('name', 'is_homepage','id as url')
+            ->orderBy('name', 'asc')
+            ->get();
+
+        $categorias->map(function($categoria ){
+            $categoria ->url = route('admin.category.show', $categoria ->url, false);
+            $categoria->is_homepage = $categoria ->is_homepage ? 'Si' : 'No';
+        });
+
+
+        $page = intval($page) > ceil($total / $perPage) ? ceil($total / $perPage) : $page;
+        return response([
+            'data' => $categorias,
+            'total' => $total,
+            'page' => $page,
+            'per_page' => $perPage,
+        ], 200, [
+            'Content-Type' => 'application/json',
+        ], JSON_PRETTY_PRINT);
+    }
 }

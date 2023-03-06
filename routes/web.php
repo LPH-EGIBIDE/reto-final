@@ -37,28 +37,35 @@ Route::middleware(['auth', 'can:is-admin'])->group(function () {
     //<editor-fold desc="Rutas Productos">
     Route::get('/admin/producto/registrar', [App\Http\Controllers\ProductController::class, 'create'])->name('admin.product.create');
     Route::post('/admin/producto/registrar', [App\Http\Controllers\ProductController::class, 'store'])->name('admin.product.store');
-    Route::get('/admin/producto/{id}/editar', [App\Http\Controllers\ProductController::class, 'edit'])->name('admin.product.edit');
-    Route::put('/admin/producto/{id}/editar', [App\Http\Controllers\ProductController::class, 'update'])->name('admin.product.update');
-    Route::get('/admin/producto/{id}', [App\Http\Controllers\ProductController::class, 'show'])->name('admin.product.show');
-    Route::delete('/admin/producto/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('admin.product.destroy');
+    Route::get('/admin/producto/{id}/editar', [App\Http\Controllers\ProductController::class, 'edit'])->name('admin.product.edit')->whereNumber('id');
+    Route::put('/admin/producto/{id}/editar', [App\Http\Controllers\ProductController::class, 'update'])->name('admin.product.update')->whereNumber('id');
+    Route::get('/admin/producto/{id}', [App\Http\Controllers\ProductController::class, 'show'])->name('admin.product.show')->whereNumber('id');
+    Route::delete('/admin/producto/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('admin.product.destroy')->whereNumber('id');
+    Route::get('/admin/producto/lista', [App\Http\Controllers\ProductController::class, 'adminIndex'])->name('admin.product.adminIndex');
+    Route::get('/admin/producto/filtrar', [App\Http\Controllers\ProductController::class, 'filter'])->name('admin.product.filter');
     //</editor-fold>
 
     //<editor-fold desc="Rutas Categorias">
     Route::get('/admin/categoria/registrar', [App\Http\Controllers\CategoryController::class, 'create'])->name('admin.category.create');
     Route::post('/admin/categoria/registrar', [App\Http\Controllers\CategoryController::class, 'store'])->name('admin.category.store');
-    Route::get('/admin/categoria/{id}/editar', [App\Http\Controllers\CategoryController::class, 'edit'])->name('admin.category.edit');
-    Route::put('/admin/categoria/{id}/editar', [App\Http\Controllers\CategoryController::class, 'update'])->name('admin.category.update');
-    Route::get('/admin/categoria/{id}', [App\Http\Controllers\CategoryController::class, 'show'])->name('admin.category.show');
-    Route::delete('/admin/categoria/{id}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('admin.category.destroy');
+    Route::get('/admin/categoria/{id}/editar', [App\Http\Controllers\CategoryController::class, 'edit'])->name('admin.category.edit')->whereNumber('id');
+    Route::put('/admin/categoria/{id}/editar', [App\Http\Controllers\CategoryController::class, 'update'])->name('admin.category.update')->whereNumber('id');
+    Route::get('/admin/categoria/{id}', [App\Http\Controllers\CategoryController::class, 'show'])->name('admin.category.show')->whereNumber('id');
+    Route::delete('/admin/categoria/{id}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('admin.category.destroy')->whereNumber('id');
+    Route::get('/admin/categoria/lista', [App\Http\Controllers\CategoryController::class, 'adminIndex'])->name('admin.category.adminIndex');
+    Route::get('/admin/categoria/filtrar', [App\Http\Controllers\CategoryController::class, 'filter'])->name('admin.category.filter');
+
     //</editor-fold>
 
     //<editor-fold desc="Rutas Codigos descuento">
     Route::get('/admin/descuento/registrar', [App\Http\Controllers\DiscountCodeController::class, 'create'])->name('admin.discount.create');
     Route::post('/admin/descuento/registrar', [App\Http\Controllers\DiscountCodeController::class, 'store'])->name('admin.discount.store');
-    Route::get('/admin/descuento/{id}/editar', [App\Http\Controllers\DiscountCodeController::class, 'edit'])->name('admin.discount.edit');
-    Route::put('/admin/descuento/{id}/editar', [App\Http\Controllers\DiscountCodeController::class, 'update'])->name('admin.discount.update');
-    Route::get('/admin/descuento/{id}', [App\Http\Controllers\DiscountCodeController::class, 'show'])->name('admin.discount.show');
-    Route::delete('/admin/descuento/{id}', [App\Http\Controllers\DiscountCodeController::class, 'destroy'])->name('admin.discount.destroy');
+    Route::get('/admin/descuento/{id}/editar', [App\Http\Controllers\DiscountCodeController::class, 'edit'])->name('admin.discount.edit')->whereNumber('id');
+    Route::put('/admin/descuento/{id}/editar', [App\Http\Controllers\DiscountCodeController::class, 'update'])->name('admin.discount.update')->whereNumber('id');
+    Route::get('/admin/descuento/{id}', [App\Http\Controllers\DiscountCodeController::class, 'show'])->name('admin.discount.show')->whereNumber('id');
+    Route::delete('/admin/descuento/{id}', [App\Http\Controllers\DiscountCodeController::class, 'destroy'])->name('admin.discount.destroy')->whereNumber('id');
+    Route::get('/admin/descuento/lista', [App\Http\Controllers\DiscountCodeController::class, 'adminIndex'])->name('admin.discount.adminIndex');
+    Route::get('/admin/descuento/filtrar', [App\Http\Controllers\DiscountCodeController::class, 'filter'])->name('admin.discount.filter');
     //</editor-fold>
 
     //</editor-fold>

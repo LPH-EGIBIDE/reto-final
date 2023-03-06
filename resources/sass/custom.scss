@@ -78,6 +78,6 @@ form textarea {
 }
 
 //input disabled
-.preview input:disabled, textarea:disabled {
+.preview input:not([type="checkbox"]):disabled, textarea:disabled {
   background-color: white !important;
 }

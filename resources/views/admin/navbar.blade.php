@@ -21,7 +21,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{route('admin.product.create')}}">Crear</a></li>
-                        <li><a class="dropdown-item" href="#">Lista</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.product.adminIndex')}}">Lista</a></li>
 
                     </ul>
                 </li>
@@ -31,7 +31,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{route('admin.category.create')}}">Crear</a></li>
-                        <li><a class="dropdown-item" href="#">Lista</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.category.adminIndex')}}">Lista</a></li>
 
                     </ul>
                 </li>
@@ -41,7 +41,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{route('admin.discount.create')}}">Crear</a></li>
-                        <li><a class="dropdown-item" href="#">Lista</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.discount.adminIndex')}}">Lista</a></li>
 
                     </ul>
                 </li>

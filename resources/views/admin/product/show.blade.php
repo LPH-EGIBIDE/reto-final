@@ -11,7 +11,7 @@
         <div class="card-body">
             <div class="container preview">
                 <div class="row mb-4">
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-2 mb-md-0">
                         <div class="form-outline">
                             <input type="text" id="productName" class="form-control" disabled
                                    value="{{$product->name}}"/>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-2 mb-md-0">
                         <div class="form-outline">
                             <input type="number" id="stock" class="form-control" disabled value="{{$product->stock}}"/>
                             <label class="form-label" for="stock">Stock</label>
@@ -63,21 +63,16 @@
                 </div>
                 <div class="card-footer">
                     <div class="row mb-4">
-                        <div class="col-md-6">
-                            <div class="d-flex justify-content-center">
-                                <a href="{{ route('admin.product.edit', $product->id) }}"
-                                   class="btn btn-primary">Editar</a>
-                            </div>
+                        <div class="col-md-6 mb-2 mb-md-0">
+                            <a href="{{ route('admin.product.edit', $product->id) }}"
+                               class="btn btn-primary btn-block">Editar</a>
                         </div>
                         <div class="col-md-6">
-                            <div class="d-flex justify-content-center">
-                                <form action="{{route('admin.product.destroy', $product->id)}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Borrar</button>
-                                </form>
-
-                            </div>
+                            <form action="{{ route('admin.product.destroy', $product->id)}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-block">Borrar</button>
+                            </form>
                         </div>
                     </div>
                 </div>

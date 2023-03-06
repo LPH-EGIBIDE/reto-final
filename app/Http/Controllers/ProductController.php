@@ -160,4 +160,40 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('admin.product.index');
     }
+
+    public function  adminIndex(){
+        return view('admin.product.index');
+    }
+    public function filter(Request $request)
+    {
+        $request->validate([
+            'page' => 'nullable|integer',
+            'filtro' => 'nullable|string|max:255',
+        ]);
+
+        $page = $request->page ?? 1;
+        $perPage = 10;
+        $offset = ($page - 1) * $perPage;
+
+        $productos = Product::where('name', 'like', '%'.$request->filtro.'%');
+        $total = $productos->count();
+        $productos = $productos->offset($offset)->limit($perPage)->select('name', 'price', 'stock', 'is_homepage','id as url')
+            ->orderBy('name', 'asc')
+            ->get();
+
+        $productos->map(function($producto){
+            $producto->url = route('admin.product.show', $producto->url, false);
+            $producto->is_homepage = $producto->is_homepage ? 'Si' : 'No';
+        });
+
+        $page = intval($page) > ceil($total / $perPage) ? ceil($total / $perPage) : $page;
+        return response([
+            'data' => $productos,
+            'total' => $total,
+            'page' => $page,
+            'per_page' => $perPage,
+        ], 200, [
+            'Content-Type' => 'application/json',
+        ], JSON_PRETTY_PRINT);
+    }
 }

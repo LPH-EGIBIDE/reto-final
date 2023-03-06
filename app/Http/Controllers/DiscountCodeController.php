@@ -105,4 +105,50 @@ class DiscountCodeController extends Controller
         session()->flash('message', 'Codigo de descuento eliminado correctamente');
         return redirect()->route('admin.discount.index');
     }
+    public function activate(int $id){
+        $discountCode = DiscountCode::findOrFail($id);
+        $discountCode->is_active = 1;
+        $discountCode->save();
+        session()->flash('message', 'Codigo de descuento activado correctamente');
+        return redirect()->route('admin.discount.show', $discountCode->id);
+    }
+
+    public function adminIndex(){
+        return view('admin.discount.index');
+    }
+
+    public function filter(Request $request)
+    {
+        $request->validate([
+            'page' => 'nullable|integer',
+            'filtro' => 'nullable|string|max:255',
+        ]);
+
+        $page = $request->page ?? 1;
+        $perPage = 10;
+        $offset = ($page - 1) * $perPage;
+
+        $codigos = DiscountCode::where('code', 'like', '%'.$request->filtro.'%');
+        $total = $codigos->count();
+        $codigos = $codigos->offset($offset)->limit($perPage)->select('code', 'uses_left', 'value', 'value_type', 'is_active', 'id as url')
+            ->orderBy('code', 'asc')
+            ->get();
+
+        $codigos->map(function($codigo ){
+            $codigo ->url = route('admin.discount.show', $codigo ->url, false);
+            $codigo->is_active = boolval($codigo ->is_active) ? 'Si' : 'No';
+        });
+
+
+        $page = intval($page) > ceil($total / $perPage) ? ceil($total / $perPage) : $page;
+        return response([
+            'data' => $codigos,
+            'total' => $total,
+            'page' => $page,
+            'per_page' => $perPage,
+        ], 200, [
+            'Content-Type' => 'application/json',
+        ], JSON_PRETTY_PRINT);
+    }
+
 }

@@ -11,7 +11,7 @@
         <div class="card-body">
             <div class="container preview">
                     <div class="row mb-4">
-                        <div class="col-md-7">
+                        <div class="col-md-7 mb-2 mb-md-0">
                             <div class="form-outline">
                                 <input type="text" id="discountCode" value="{{$discountCode->code}}"
                                        class="form-control" required disabled/>
@@ -25,7 +25,7 @@
                                 <label class="form-label" for="discountUses_left">Usos</label>
                             </div>
                         </div>
-                        <div class="col-md-2 d-flex align-items-center">
+                        <div class="col-md-2 d-flex align-items-center mt-2 mt-md-0">
                             <div class="form-check ">
                                 <input class="form-check-input" type="checkbox" @if($discountCode->is_active) checked
                                        @endif id="flexCheckDefault" disabled/>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="row mb-4">
-                        <div class="col-md-9">
+                        <div class="col-md-9 mb-2 mb-md-0">
                             <div class="form-outline">
                                 <input type="text" id="discountValue" value="{{$discountCode->value}}"
                                        class="form-control" required disabled/>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="row mb-4">
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-2 mb-md-0">
                                 <a href="{{ route('admin.discount.edit', $discountCode->id) }}"
                                    class="btn btn-primary btn-block">Editar</a>
                             </div>
