@@ -18,13 +18,13 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="{{route('home')}}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Catálogo</a>
+                        <a class="nav-link" href="{{route('product.index')}}">Catálogo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Egibide</a>
+                        <a class="nav-link" href="https://www.egibide.org/escuela-de-hosteleria/">Egibide</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -33,8 +33,8 @@
             <!-- Right elements -->
             <div class="d-flex align-items-center justify-content-end col">
                 <!-- Icon -->
-                <a class="text-reset me-3" href="#">
-                    <i class="fas fa-shopping-cart fs-4" ></i>
+                <a class="text-reset me-3" href="{{route('cart.show')}}">
+                    <i class="fas fa-shopping-cart fs-4"></i>
                 </a>
                 <!-- Notifications -->
                 <div class="dropdown">

@@ -19,13 +19,10 @@ Route::get('/producto', function () {
     return view('products.show');
 });
 
-Route::get('/carrito', function () {
-    return view('cart.show');
-});
+Route::get('/productos', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
+Route::get('/productos/{id}', [App\Http\Controllers\ProductController::class, 'showUser'])->name('product.show')->whereNumber('id');
+Route::get('/carrito', [App\Http\Controllers\HomeController::class, 'carrito'])->name('cart.show');
 
-Route::get('/productos', function () {
-    return view('products.index');
-});
 
 Auth::routes();
 
