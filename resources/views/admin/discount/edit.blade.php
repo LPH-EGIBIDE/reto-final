@@ -61,9 +61,6 @@
                         <div class="col-md-6">
                             <button type="submit" class="btn btn-primary btn-block">Editar</button>
                         </div>
-                        <div class="col-md-6">
-                            <button type="submit" class="btn btn-danger btn-block">Borrar</button>
-                        </div>
                     </div>
                 </form>
             </div>

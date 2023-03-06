@@ -9,27 +9,44 @@
             <i class="fas fa-bars"></i>
         </button>
         <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <div class="collapse navbar-collapse col-4" id="navbarButtonsExample">
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('admin.admin')}}">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                         Productos
                     </a>
                     <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Crear</a></li>
-                        <li><a class="dropdown-item" href="#">Modificar</a></li>
-                        <li><a class="dropdown-item" href="#">Categorias</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.product.create')}}">Crear</a></li>
+                        <li><a class="dropdown-item" href="#">Lista</a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        Categorias
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{route('admin.category.create')}}">Crear</a></li>
+                        <li><a class="dropdown-item" href="#">Lista</a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        Descuentos
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{route('admin.discount.create')}}">Crear</a></li>
+                        <li><a class="dropdown-item" href="#">Lista</a></li>
+
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pedidos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Descuentos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Usuarios</a>

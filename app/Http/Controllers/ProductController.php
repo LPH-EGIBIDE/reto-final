@@ -158,5 +158,6 @@ class ProductController extends Controller
         // Delete product
         session()->flash('message', 'Producto eliminado con éxito');
         $product->delete();
+        return redirect()->route('admin.product.index');
     }
 }
