@@ -37,7 +37,7 @@ class AttachmentController extends Controller
         ]);
         $file = $request->file('file');
         $isPublic = $request->input('is_public', true);
-        $attachment = $this->store($file, $isPublic);
+        $attachment = $this::store($file, $isPublic);
         return response()->json($attachment);
     }
 
@@ -47,7 +47,7 @@ class AttachmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return Attachment
      */
-    public function store(UploadedFile $file, $isPublic = true)
+    public static function store(UploadedFile $file, $isPublic = true)
     {
         $fileName = $file->getClientOriginalName();
         $filePath = $file->storeAs('uploads', uniqid().'.bin', 'public');
@@ -120,7 +120,7 @@ class AttachmentController extends Controller
      * @param  \App\Models\Attachment  $attachment
      * @return boolean
      */
-    public function destroy(Attachment $attachment)
+    public static function destroy(Attachment $attachment)
     {
         //Delete the file from the storage
         Storage::disk('public')->delete($attachment->file_path);

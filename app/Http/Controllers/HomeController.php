@@ -20,4 +20,8 @@ class HomeController extends Controller
         $products = Product::where('is_homepage', true)->get();
         return view('welcome', compact('categories', 'products'));
     }
+    public function admin()
+    {
+        return view('admin.index');
+    }
 }

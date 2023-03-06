@@ -32,6 +32,6 @@ class Product extends Model
 
     public function attachment():BelongsTo
     {
-        return $this->belongsTo(Attachment::class);
+        return $this->belongsTo(Attachment::class, 'image');
     }
 }

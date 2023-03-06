@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
@@ -21,6 +22,11 @@ class Category extends Model
     {
         //get all products that belong to this category using the product_categories pivot table
         return $this->hasMany(ProductCategories::class);
+    }
+
+    public function attachment():BelongsTo
+    {
+        return $this->belongsTo(Attachment::class, 'attachment_id');
     }
 
 
