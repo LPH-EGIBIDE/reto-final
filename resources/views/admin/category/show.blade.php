@@ -14,22 +14,22 @@
                     <div class="row mb-4">
                         <div class="col-md-12">
                             <div class="form-outline">
-                                <input type="text" id="categoryName" class="form-control" disabled value="NOMBRE" />
+                                <input type="text" id="categoryName" class="form-control" disabled value="{{$category->name}}" />
                                 <label class="form-label" for="categoryName">Nombre categoria</label>
                             </div>
                         </div>
                     </div>
                     <div class="row mb-4">
-                        <div class="col-md-12">
-                            <div class="form-outline">
-                                <h3>IMAGEN</h3>
+                        <div class="col-md-12 ">
+                            <div class="d-flex justify-content-center">
+                                <img src="{{route('attachment.show.custom', [$category->attachment->id, '350', '250'])}}" alt="" class="img-fluid" srcset="">
                             </div>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-12">
                             <div class="d-flex justify-content-center">
-                                <a href="{{ route('admin.category.edit', '1') }}" class="btn btn-primary">Editar</a>
+                                <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-primary">Editar</a>
                             </div>
                         </div>
                     </div>
