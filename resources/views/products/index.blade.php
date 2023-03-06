@@ -11,22 +11,46 @@
     <div class="row">
         <div class="col-3">
             <div class="card border border-primary shadow-0">
-                <div class="card-header">Busqueda por filtros</div>
+
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make up the bulk of the
-                    card's content.
-                  </p>
-              
-                  <button type="button" class="btn btn-primary">Button</button>
+                    <div class="card-text">
+                      <h6 class="p-1 border-bottom"><strong>Cátegoria</strong></h6>
+                      <ul class="list-group list-group-light">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                          <a href="#1" class="link-dark">The first list item</a>
+                          <span class="badge badge-primary rounded-pill">14</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                          <a href="#1" class="link-dark">The second list item</a>
+                          <span class="badge badge-primary rounded-pill">23</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                          <a href="#1" class="link-dark">The third list item</a>
+                          <span class="badge badge-primary rounded-pill">9</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card-text">
+                      <h6 class="p-1 border-bottom mt-2"><strong>Precio</strong></h6>
+                      <ul class="list-group list-group-light">
+                        <li class="list-group-item">
+                          <input class="form-check-input" type="radio" value="" id="mayorMenor" name="precio" aria-label="..." />
+                          <label for="mayorMenor"> De mayor a menor </label>
+                        </li>
+                        <li class="list-group-item">
+                          <input class="form-check-input" type="radio" value="" id="menorMayor" name="precio" aria-label="..." />
+                          <label for="menorMayor"> De menor a mayor</label>
+                        </li>
+                      </ul>
+                    </div>
+                  <button type="button" class="btn btn-primary">Buscar</button>
                 </div>
               </div>
         </div>
         <div class="col-9 text-center">
             <div class="row">
                 <div class="col-lg-3 col-md-12 mb-3">
-                  <div class="card">
+                  <div class="card hover-shadow">
                     <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                       data-mdb-ripple-color="light">
                       <img src="https://img.freepik.com/foto-gratis/vista-frontal-deliciosa-carne-hamburguesa-queso-papas-fritas-tabla-cortar-fondo-oscuro-comida-rapida-comida-bocadillo-cena-plato-sandwich_140725-156319.jpg?w=2000"
@@ -50,7 +74,7 @@
                 </div>
         
                 <div class="col-lg-3 col-md-12 mb-3">
-                    <div class="card">
+                    <div class="card hover-shadow">
                       <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                         data-mdb-ripple-color="light">
                         <img src="https://img.freepik.com/foto-gratis/vista-frontal-deliciosa-carne-hamburguesa-queso-papas-fritas-tabla-cortar-fondo-oscuro-comida-rapida-comida-bocadillo-cena-plato-sandwich_140725-156319.jpg?w=2000"
@@ -74,7 +98,7 @@
                   </div>
           
                 <div class="col-lg-3 col-md-12 mb-3">
-                  <div class="card">
+                  <div class="card hover-shadow">
                     <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                       data-mdb-ripple-color="light">
                       <img src="https://img.freepik.com/foto-gratis/vista-frontal-deliciosa-carne-hamburguesa-queso-papas-fritas-tabla-cortar-fondo-oscuro-comida-rapida-comida-bocadillo-cena-plato-sandwich_140725-156319.jpg?w=2000"
@@ -99,7 +123,7 @@
         
           
                 <div class="col-lg-3 col-md-12 mb-3">
-                  <div class="card">
+                  <div class="card hover-shadow">
                     <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
                       <img src="https://img.freepik.com/foto-gratis/vista-frontal-deliciosa-carne-hamburguesa-queso-papas-fritas-tabla-cortar-fondo-oscuro-comida-rapida-comida-bocadillo-cena-plato-sandwich_140725-156319.jpg?w=2000"
                         class="w-100" />
@@ -126,7 +150,7 @@
           
               <div class="row">
                 <div class="col-lg-3 col-md-12 mb-3">
-                    <div class="card">
+                    <div class="card hover-shadow">
                       <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                         data-mdb-ripple-color="light">
                         <img src="https://img.freepik.com/foto-gratis/vista-frontal-deliciosa-carne-hamburguesa-queso-papas-fritas-tabla-cortar-fondo-oscuro-comida-rapida-comida-bocadillo-cena-plato-sandwich_140725-156319.jpg?w=2000"
@@ -149,7 +173,7 @@
                     </div>
                   </div>
                 <div class="col-lg-3 col-md-12 mb-3">
-                  <div class="card">
+                  <div class="card hover-shadow">
                     <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
                       <img src="https://img.freepik.com/foto-gratis/vista-frontal-deliciosa-carne-hamburguesa-queso-papas-fritas-tabla-cortar-fondo-oscuro-comida-rapida-comida-bocadillo-cena-plato-sandwich_140725-156319.jpg?w=2000"
                         class="w-100" />
@@ -174,7 +198,7 @@
                 </div>
           
                 <div class="col-lg-3 col-md-12 mb-3">
-                  <div class="card">
+                  <div class="card hover-shadow">
                     <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                       data-mdb-ripple-color="light">
                       <img src="https://img.freepik.com/foto-gratis/vista-frontal-deliciosa-carne-hamburguesa-queso-papas-fritas-tabla-cortar-fondo-oscuro-comida-rapida-comida-bocadillo-cena-plato-sandwich_140725-156319.jpg?w=2000" class="w-100" />
@@ -197,7 +221,7 @@
                 </div>
           
                 <div class="col-lg-3 col-md-12 mb-3">
-                  <div class="card">
+                  <div class="card hover-shadow">
                     <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
                       <img src="https://img.freepik.com/foto-gratis/vista-frontal-deliciosa-carne-hamburguesa-queso-papas-fritas-tabla-cortar-fondo-oscuro-comida-rapida-comida-bocadillo-cena-plato-sandwich_140725-156319.jpg?w=2000" class="w-100" />
                       <a href="#!">
