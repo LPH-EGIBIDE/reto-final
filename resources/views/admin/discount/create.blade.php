@@ -12,8 +12,8 @@
             <div class="container">
                 <form method="post" action="{{route('admin.discount.store')}}">
                     @csrf
-                    <div class="row mb-4">
-                        <div class="col-md-9">
+                    <div class="row mb-4 ">
+                        <div class="col-md-9 mb-2 mb-md-0">
                             <div class="form-outline">
                                 <input type="text" id="discountCode" name="code" class="form-control" required />
                                 <label class="form-label" for="discountCode">Codigo</label>
@@ -26,8 +26,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-4">
-                        <div class="col-md-9">
+                    <div class="row mb-4 ">
+                        <div class="col-md-9 mb-2 mb-md-0">
                             <div class="form-outline">
                                 <input type="text" id="discountValue" name="value" class="form-control" required />
                                 <label class="form-label" for="discountValue">Valor del descuento</label>

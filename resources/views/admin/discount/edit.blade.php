@@ -14,7 +14,7 @@
                     @csrf
                     @method('PUT')
                     <div class="row mb-4">
-                        <div class="col-md-7">
+                        <div class="col-md-7 mb-2 mb-md-0">
                             <div class="form-outline">
                                 <input type="text" name="code" id="discountCode" value="{{$discountCode->code}}" class="form-control" required  />
                                 <label class="form-label" for="discountCode">Codigo</label>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="row mb-4">
-                        <div class="col-md-9">
+                        <div class="col-md-9 mb-2 mb-md-0">
                             <div class="form-outline">
                                 <input type="text" id="discountValue" name="value" value="{{$discountCode->value}}" class="form-control" required  />
                                 <label class="form-label" for="discountValue">Valor del descuento</label>
