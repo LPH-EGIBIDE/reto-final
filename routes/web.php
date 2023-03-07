@@ -40,7 +40,9 @@ Route::middleware(['auth'])->group(function () {
     //</editor-fold>
 
 
-
+    //<editor-fold desc="Rutas User">
+    Route::get('/perfil', [App\Http\Controllers\HomeController::class, 'profile'])->name('user.index');
+    //</editor-fold>
 });
 
 Route::middleware(['auth', 'can:is-admin'])->group(function () {

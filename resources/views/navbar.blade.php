@@ -18,7 +18,7 @@
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Dashboard</a>
+                        <a class="nav-link" href="{{route('home')}}">Inico</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Team</a>
@@ -33,6 +33,7 @@
             <!-- Right elements -->
             <div class="d-flex align-items-center justify-content-end col">
                 <!-- Icon -->
+                @if(Auth::check())
                 <a class="text-reset me-3" href="#">
                     <i class="fas fa-shopping-cart fs-4" ></i>
                 </a>
@@ -55,23 +56,33 @@
                     </ul>
                 </div>
                 <!-- Avatar -->
-                <div class="dropdown">
-                    <a class="drop down-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                        <!-- Avatar -->
-                        <img src="{{Vite::asset('resources/images/avatar_prueba.jpg')}}" class="rounded-circle" height="42" alt="" loading="lazy" />
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                        <li>
-                            <a class="dropdown-item" href="#">My profile</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Settings</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </li>
-                    </ul>
-                </div>
+
+                    <div class="dropdown">
+                        <a class="drop down-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                            <!-- Avatar -->
+                            <img src="{{"https://www.gravatar.com/avatar/" . md5( strtolower( trim( auth()->user()->email ) ) ) . "&s=300&time=".time()}}" class="rounded-circle" height="42" alt="" loading="lazy" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                            <li>
+                                <a class="dropdown-item" href="{{route('user.index')}}">Mi Perfil</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Settings</a>
+                            </li>
+                            <li>
+                                <form action="{{route('logout')}}" method="post">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                </form>
+
+                            </li>
+                        </ul>
+                    </div>
+
+                @else
+                    <a href="{{route('login')}}" class="btn btn-primary btn-sm">Login</a>
+                @endif
+
             </div>
             <!-- Right elements -->
         </div>
