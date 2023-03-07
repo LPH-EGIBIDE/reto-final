@@ -28,6 +28,21 @@ Route::get('/attachments/{id}', [App\Http\Controllers\AttachmentController::clas
 Route::get('/attachments/{id}/{width}/{height}', [App\Http\Controllers\AttachmentController::class, 'show'])->name('attachment.show.custom')->whereNumber('id')->whereNumber('width')->whereNumber('height');
 //</editor-fold>
 
+Route::middleware(['auth'])->group(function () {
+    //<editor-fold desc="Rutas Carrito">
+    Route::get('/carrito', [App\Http\Controllers\CartController::class, 'show'])->name('cart.show');
+    Route::patch('/carrito', [App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
+    Route::delete('/carrito', [App\Http\Controllers\CartController::class, 'destroy'])->name('cart.destroy');
+    Route::get('/carrito/checkout', [App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
+    Route::get('/carrito/api', [App\Http\Controllers\CartController::class, 'api'])->name('cart.api');
+    Route::post('/carrito/api/discounts', [App\Http\Controllers\CartController::class, 'addDiscount'])->name('cart.addDiscount');
+    Route::delete('/carrito/api/discounts', [App\Http\Controllers\CartController::class, 'removeDiscount'])->name('cart.removeDiscount');
+    //</editor-fold>
+
+
+
+});
+
 Route::middleware(['auth', 'can:is-admin'])->group(function () {
     //<editor-fold desc="Rutas Admin">
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin.admin');
