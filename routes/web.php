@@ -28,6 +28,12 @@ Route::get('/attachments/{id}', [App\Http\Controllers\AttachmentController::clas
 Route::get('/attachments/{id}/{width}/{height}', [App\Http\Controllers\AttachmentController::class, 'show'])->name('attachment.show.custom')->whereNumber('id')->whereNumber('width')->whereNumber('height');
 //</editor-fold>
 
+Route::middleware(['auth'])->group(function () {
+    //<editor-fold desc="Rutas User">
+    Route::get('/perfil', [App\Http\Controllers\HomeController::class, 'profile'])->name('user.index');
+    //</editor-fold>
+});
+
 Route::middleware(['auth', 'can:is-admin'])->group(function () {
     //<editor-fold desc="Rutas Admin">
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin.admin');

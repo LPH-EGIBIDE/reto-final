@@ -24,4 +24,11 @@ class HomeController extends Controller
     {
         return view('admin.index');
     }
+
+    public function profile()
+    {
+        $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( auth()->user()->email ) ) ) . "&s=150";
+
+        return view('user.index', ['user' => auth()->user(), 'grav_url' => $grav_url]);
+    }
 }

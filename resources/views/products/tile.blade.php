@@ -5,7 +5,9 @@
                 <div class="card shadow-0 border rounded-3">
                     <div class="card-body">
                         <div class="row">
+                            @if ($product->attachment)
                             <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+
                                 <div class="bg-image hover-zoom ripple rounded ripple-surface d-md-flex justify-content-md-center">
                                     <img src="{{route('attachment.show.custom', [$product->image, '342', '385'])}}"  class="d-none d-md-block img-fluid"/>
                                     <img src="{{route('attachment.show.custom', [$product->image, '684', '711'])}}"  class="d-block d-md-none img-fluid"/>
@@ -16,6 +18,7 @@
                                     </a>
                                 </div>
                             </div>
+                            @endif
                             <div class="col-md-6 col-lg-6 col-xl-6">
                                 <h5>{{$product->name}}</h5>
 
