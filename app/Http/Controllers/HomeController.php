@@ -27,7 +27,7 @@ class HomeController extends Controller
 
     public function profile()
     {
-        $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( auth()->user()->email ) ) ) . "&s=150";
+        $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( auth()->user()->email ) ) ) . "&s=300&time=".time();
 
         return view('user.index', ['user' => auth()->user(), 'grav_url' => $grav_url]);
     }

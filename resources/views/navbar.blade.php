@@ -60,11 +60,11 @@
                     <div class="dropdown">
                         <a class="drop down-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                             <!-- Avatar -->
-                            <img src="{{Vite::asset('resources/images/avatar_prueba.jpg')}}" class="rounded-circle" height="42" alt="" loading="lazy" />
+                            <img src="{{"https://www.gravatar.com/avatar/" . md5( strtolower( trim( auth()->user()->email ) ) ) . "&s=300&time=".time()}}" class="rounded-circle" height="42" alt="" loading="lazy" />
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>
-                                <a class="dropdown-item" href="#">My profile</a>
+                                <a class="dropdown-item" href="{{route('user.index')}}">Mi Perfil</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">Settings</a>
