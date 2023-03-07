@@ -11,20 +11,20 @@
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0 d-none d-lg-block" href="#">
+                <a class="navbar-brand mt-2 mt-lg-0 d-none d-lg-block" href="{{route('home')}}">
                     <!-- Image Logo -->
                     <img src="{{Vite::asset('resources/images/logo_egibide.png')}}" height="42" alt="" loading="lazy" />
                 </a>
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('home')}}">Inico</a>
+                        <a class="nav-link" href="{{route('home')}}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Team</a>
+                        <a class="nav-link" href="{{route('product.index')}}">Catálogo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Projects</a>
+                        <a class="nav-link" href="https://www.egibide.org/escuela-de-hosteleria/">Egibide</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -34,8 +34,8 @@
             <div class="d-flex align-items-center justify-content-end col">
                 <!-- Icon -->
                 @if(Auth::check())
-                <a class="text-reset me-3" href="#">
-                    <i class="fas fa-shopping-cart fs-4" ></i>
+                <a class="text-reset me-3" href="{{route('cart.show')}}">
+                    <i class="fas fa-shopping-cart fs-4"></i>
                 </a>
                 <!-- Notifications -->
                 <div class="dropdown">

@@ -38,7 +38,7 @@
                                     <h4 class="mb-1 me-1">€{{$product->price}}</h4>
                                 </div>
                                 <div class="d-flex flex-column mt-4">
-                                    <a href="#" class="btn btn-primary btn-sm">Detalles</a>
+                                    <a href="{{route('product.show',$product)}}" class="btn btn-primary btn-sm">Detalles</a>
                                     <a href="#" class="btn btn-outline-primary btn-sm mt-2">
                                         Añadir al carrito
                                     </a>

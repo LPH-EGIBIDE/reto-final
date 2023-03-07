@@ -14,7 +14,17 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        $categories = Category::all();
+        $count = Product::all();
+        if (isset($_GET['category'])) {
+            $products = Product::whereHas('categories', function ($query) {
+                $query->where('category_id', $_GET['category']);
+            })->get();
+        } else {
+            $products = Product::all();
+        }
+        return view('products.index', compact('products', 'categories', 'count'));
     }
 
     /**
@@ -65,6 +75,18 @@ class ProductController extends Controller
         return redirect()->route('admin.product.index');
 
 
+    }
+
+    /**
+    * Display the specified resource.
+    */
+    public function showUser(int $id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        $products = Product::all();
+        $productCategories = $product->categories;
+        return view('products.show' , compact('product', 'categories', 'products', 'productCategories'));
     }
 
     /**
