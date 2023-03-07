@@ -48,12 +48,14 @@
               @foreach ($products as $product)
               <div class="col-lg-3 col-md-12 mb-3">
                 <div class="card hover-shadow border img-cursor">
+                    @if($product->attachment)
                   <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light">
                     <img src="{{route('attachment.show.custom', [$product->attachment->id, '350', '250'])}}" class="w-100" />
                       <div class="hover-overlay">
                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                       </div>
                   </div>
+                    @endif
                   <div class="card-body">
                     <a href="{{route('product.show',$product)}}" class="text-reset">
                       <h5 class="card-title mb-2"><strong>{{$product->name}}</strong></h5>

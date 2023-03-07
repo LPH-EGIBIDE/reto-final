@@ -34,9 +34,14 @@
             <div class="d-flex align-items-center justify-content-end col">
                 <!-- Icon -->
                 @if(Auth::check())
-                <a class="text-reset me-3" href="{{route('cart.show')}}">
-                    <i class="fas fa-shopping-cart fs-4"></i>
-                </a>
+                    @can('is-admin')
+                        <a class="text-reset me-3" href="{{route('admin.admin')}}">
+                            <i class="fa-solid fa-shield-halved fs-4"></i>
+                        </a>
+                    @endcan
+                        <a class="text-reset me-3" href="{{route('cart.show')}}">
+                            <i class="fas fa-shopping-cart fs-4"></i>
+                        </a>
                 <!-- Notifications -->
                 <div class="dropdown">
                     <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">

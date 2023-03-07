@@ -18,10 +18,8 @@
                                     <tr>
                                         <td>
                                             <ul class="list-group list-group-flush text-break">
-                                                <li class="list-group-item">Nombre: </li>
-                                                <li class="list-group-item">DNI: </li>
-                                                <li class="list-group-item">Email: </li>
-                                                <li class="list-group-item">Teléfono: </li>
+                                                <li class="list-group-item">Nombre: {{auth()->user()->name}} </li>
+                                                <li class="list-group-item">Email: {{auth()->user()->email}} </li>
                                             </ul>
                                         </td>
                                     </tr>

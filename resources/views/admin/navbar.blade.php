@@ -3,7 +3,7 @@
     <!-- Container wrapper -->
     <div class="container">
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="#">Titulo</a>
+        <a class="navbar-brand" href="{{route('home')}}">Alex Subnormal</a>
         <!-- Toggle button -->
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
@@ -54,9 +54,12 @@
             </ul>
             <!-- Left links -->
             <div class="d-flex align-items-center">
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
                 <button class="btn btn-danger" type="submit">
                     <i class="fa-solid fa-right-from-bracket text-light"></i>
                 </button>
+                </form>
             </div>
         </div>
         <!-- Collapsible wrapper -->

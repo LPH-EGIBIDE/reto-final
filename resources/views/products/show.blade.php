@@ -5,15 +5,17 @@
 @endsection
 
 @section('content')
-    <div class="row mt-lg-5">
+    <div class="row mt-lg-5 my-3">
         <div class="col-lg-10 offset-lg-1">
             <div class="card shadow-card hover-shadow">
                 <div class="row">
+                    @if($product->attachment)
                     <div class="col-md-6 d-flex align-items-center">
                             <div class="p-4">
                                 <img class="img-fluid" src="{{route('attachment.show.custom', [$product->attachment->id, '450', '300'])}}"/>
                             </div>
                     </div>
+                    @endif
                     <div class="col-md-6">
                         <div class="product p-4">
                             <form action="" method="POST">
