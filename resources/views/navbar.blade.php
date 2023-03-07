@@ -11,7 +11,7 @@
             <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0 d-none d-lg-block" href="#">
+                <a class="navbar-brand mt-2 mt-lg-0 d-none d-lg-block" href="{{route('home')}}">
                     <!-- Image Logo -->
                     <img src="{{Vite::asset('resources/images/logo_egibide.png')}}" height="42" alt="" loading="lazy" />
                 </a>

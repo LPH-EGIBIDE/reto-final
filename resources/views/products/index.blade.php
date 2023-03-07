@@ -11,7 +11,6 @@
     <div class="row">
         <div class="col-3">
             <div class="card border border-primary shadow-0">
-
                 <div class="card-body">
                     <div class="card-text">
                       <h6 class="p-1 border-bottom"><strong>Cátegoria</strong></h6>
