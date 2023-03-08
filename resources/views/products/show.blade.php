@@ -18,7 +18,7 @@
                     @endif
                     <div class="col-md-6">
                         <div class="product p-4">
-                            <form action="{{route('cart.update')}}" method="POST">
+                            <form action="{{route('cart.update')}}" class="cart-product-form" method="POST">
                                 @csrf
                                 @method('PATCH')
                                 <input type="hidden" name="product_id" value="{{$product->id}}">
@@ -43,7 +43,7 @@
                                     <label class="form-label" for="typeNumber">Cantidad</label>
                                 </div>
                                 <div class="cart mt-4 align-items-center">
-                                    <input type="submit" class="btn btn-danger text-uppercase mr-2 px-4" value="Añadir al carro">
+                                    <button type="submit" class="btn btn-danger text-uppercase mr-2 px-4">Añadir al carro</button>
                                 </div>
                             </form>
                         </div>
@@ -58,12 +58,12 @@
           <h4 class="mt-4 mb-4 pb-3 border-bottom"><strong>Productos relacionados</strong></h4>
           <div class="row">
             @for ($i = 1; $i <= 3; $i++)
-            <div class="col-lg-4 offset-3 offset-lg-0 col-6 col-lg mb-4 product can-order-by" >
+            <div class="col-lg-4 offset-1 offset-lg-0 col-10 col-lg mb-4 product can-order-by" >
               <div class="card border hover-shadow img-cursor">
                <a href="{{route('product.show',$products->find($i))}}" class="text-reset">
                 <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                   data-mdb-ripple-color="light">
-                  <img src="{{route('attachment.show.custom', [$products->find($i)->attachment->id, '350', '230'])}}" class="w-100" />
+                  <img src="{{route('attachment.show.custom', [$products->find($i)->attachment->id, '700', '460'])}}" class="img-fluid" />
                     <div class="hover-overlay">
                       <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                     </div>

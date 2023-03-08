@@ -5,122 +5,16 @@
 @endsection
 
 @section('content')
+    @include('alerts')
 <section class="h-100 gradient-custom">
     <div class="container py-3">
       <div class="row d-flex justify-content-center my-4">
         <div class="col-md-8">
           <div class="card mb-4">
             <div class="card-header py-3">
-              <h5 class="mb-0">Carrito - 2 items</h5>
+              <h5 class="mb-0">Carrito</h5>
             </div>
-            <div class="card-body">
-              <!-- Single item -->
-              <div class="row">
-                <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                  <!-- Image -->
-                  <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                    <img src="https://w0.peakpx.com/wallpaper/612/979/HD-wallpaper-food-burger.jpg" class="w-100 h-100" alt="Blue Jeans Jacket" />
-                    <a href="#!">
-                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-                    </a>
-                  </div>
-                  <!-- Image -->
-                </div>
-  
-                <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                  <!-- Data -->
-                  <p><strong>Blue denim shirt</strong></p>
-                  <p>Descripción: Pollo al horno, con patatas fritas y ensalada</p>
-                  <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Eliminar producto">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                  <!-- Data -->
-                </div>
-  
-                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                  <!-- Quantity -->
-                  <div class="d-flex mb-4" style="max-width: 300px">
-                    <button class="btn btn-primary px-3 me-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                      <i class="fas fa-minus"></i>
-                    </button>
-  
-                    <div class="form-outline">
-                      <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
-                      <label class="form-label" for="form1">Cantidad</label>
-                    </div>
-  
-                    <button class="btn btn-primary px-3 ms-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                      <i class="fas fa-plus"></i>
-                    </button>
-                  </div>
-                  <!-- Quantity -->
-  
-                  <!-- Price -->
-                  <p class="text-start text-md-center">
-                    <strong>$17.99</strong>
-                  </p>
-                  <!-- Price -->
-                </div>
-              </div>
-              <!-- Single item -->
-  
-              <hr class="my-4" />
-  
-              <!-- Single item -->
-              <div class="row">
-                <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                  <!-- Image -->
-                  <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                    <img src="https://w0.peakpx.com/wallpaper/780/28/HD-wallpaper-delicious-meal-meal-lunch-delicious-food-meat-salad.jpg"
-                      class="w-100" />
-                    <a href="#!">
-                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-                    </a>
-                  </div>
-                  <!-- Image -->
-                </div>
-  
-                <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                  <!-- Data -->
-                  <p><strong>Red hoodie</strong></p>
-                  <p>Descripción: Pollo al horno, con patatas fritas y ensalada</p>
-                  <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
-                    title="Eliminar producto">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                  <!-- Data -->
-                </div>
-  
-                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                  <!-- Quantity -->
-                  <div class="d-flex mb-4" style="max-width: 300px">
-                    <button class="btn btn-primary px-3 me-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                      <i class="fas fa-minus"></i>
-                    </button>
-  
-                    <div class="form-outline">
-                      <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control"/>
-                      <label class="form-label" for="form1">Cantidad</label>
-                    </div>
-  
-                    <button class="btn btn-primary px-3 ms-2"
-                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                      <i class="fas fa-plus"></i>
-                    </button>
-                  </div>
-                  <!-- Quantity -->
-  
-                  <!-- Price -->
-                  <p class="text-start text-md-center">
-                    <strong>$17.99</strong>
-                  </p>
-                  <!-- Price -->
-                </div>
-              </div>
-              <!-- Single item -->
+            <div class="card-body" id="cart">
             </div>
           </div>
           <div class="card mb-4">
@@ -153,18 +47,12 @@
               <h5 class="mb-0">Resumen</h5>
             </div>
             <div class="card-body">
+              <ul class="list-group list-group-flush" id="cart-list">
+              </ul>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                  Blue denim shirt
-                  <span>19.99€</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center px-0 pb-0 border-0">
-                    Red hoodie
-                  <span>29,99€</span>
-                </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                     Descuento
-                  <span>10%</span>
+                  <span><span id="cart-discount">0</span>€</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                   <div>
@@ -173,15 +61,49 @@
                       <p class="mb-0">(IVA incluido)</p>
                     </strong>
                   </div>
-                  <span><strong>49,98€</strong></span>
+                  <span><strong><span id="cart-total">0</span>€</strong></span>
                 </li>
               </ul>
-  
+
               <button type="button" class="btn btn-primary btn-lg btn-block">
                 Finalizar compra
               </button>
             </div>
           </div>
+          <div class="card mb-4">
+            <div class="card-header py-3">
+                <h5 class="mb-0">Descuentos</h5>
+            </div>
+                <div class="card-body">
+                    <form method="post" action="{{route('cart.addDiscount')}}" id="discount-input">
+                        @csrf
+                        <div class="input-group mb-3 form-outline" >
+                            <input type="text" class="form-control" name="discount_code"  aria-describedby="button-addon2">
+                            <label class="form-label" for="form1">Código de descuento</label>
+                            <button class="btn btn-primary" type="submit" id="button-addon2">Aplicar</button>
+
+                        </div>
+                    </form>
+
+                    <form method="post" action="{{route('cart.removeDiscount')}}" class="d-none" id="discount-input-applied">
+                        @csrf
+                        @method('DELETE')
+                        <div class="input-group mb-3 " id="discount-input">
+                            <input type="text" class="form-control" name="discount_code"  aria-describedby="button-addon2">
+                            <button class="btn btn-danger" type="submit" id="button-addon2">Eliminar</button>
+
+                        </div>
+                    </form>
+                    <form action="{{route('cart.update')}}" method="post" id="product-controls">
+                        @csrf
+                        @method('PATCH')
+                        <input type="hidden" name="method">
+                        <input type="hidden" name="product_id">
+                        <input type="hidden" name="quantity" value="1">
+
+                    </form>
+                </div>
+            </div>
         </div>
       </div>
     </div>

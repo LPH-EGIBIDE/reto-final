@@ -1,5 +1,4 @@
-import alerts from './alerts'; // custom
-
-window.addEventListener('load', () => {
-    alerts.testAlerts();
+import cart from "./cart";
+window.addEventListener('load', function () {
+    cart.init();
 });
