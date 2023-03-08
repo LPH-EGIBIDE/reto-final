@@ -78,16 +78,10 @@ class CartController extends Controller
         switch ($method) {
             case 'push':
                 $this->push($productId, $request->input('quantity'));
-                return response()->json([
-                    'success' => 'Producto agregado al carrito',
-                    'cart' => $this->getCart()
-                ]);
+                return $this->api(true, 'Producto eliminado del carrito');
             case 'pop':
                 $this->pop($productId);
-                return response()->json([
-                    'success' => 'Producto eliminado del carrito',
-                    'cart' => $this->getCart()
-                ]);
+                return $this->api(true, 'Producto eliminado del carrito');
         }
         return response()->json([
             'error' => 'Error al actualizar el carrito'
@@ -142,7 +136,7 @@ class CartController extends Controller
     }
 
 
-    public function api()
+    public function api($success = true, $message = "")
     {
         $cart = $this->getCart();
         $products = Product::whereIn('id', array_keys($cart['products']))->where('is_active', '=', '1')
@@ -163,6 +157,7 @@ class CartController extends Controller
         foreach ($cartArray['products'] as $product) {
             $cartArray['total'] += $product['total'];
         }
+        $cart['discounts'] = $cart['discounts'] ?? [];
         foreach ($cart['discounts'] as $discount) {
             $discount = DiscountCode::where('code', $discount)->select('id', 'code', 'discount')->first();
             if ($discount) {
@@ -177,6 +172,13 @@ class CartController extends Controller
                 }
                 $cartArray['discounts'][] = ['discount' => $discount, 'reduction' => $preDiscount - $cartArray['total']];
             }
+        }
+
+        if ($success) {
+            return response()->json([
+                'success' => $message,
+                'cart' => $cartArray
+            ], 200, [], JSON_NUMERIC_CHECK);
         }
 
         return response()->json([
