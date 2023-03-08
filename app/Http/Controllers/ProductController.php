@@ -220,7 +220,7 @@ class ProductController extends Controller
     }
     public function relatedProducts(Product $product, $quantity = 3){
         $relatedProducts = Product::whereHas('categories', function ($query) use ($product) {
-            $query->whereIn('category_id', $product->categories->pluck('id'));
+            $query->whereIn('category_id', $product->categories->pluck('category_id'));
         })->where('id', '!=', $product->id)->take($quantity)->get();
         return $relatedProducts;
 

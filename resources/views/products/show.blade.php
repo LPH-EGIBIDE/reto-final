@@ -18,7 +18,7 @@
                     @endif
                     <div class="col-md-6">
                         <div class="product p-4">
-                            <form action="{{route('cart.update')}}" method="POST">
+                            <form action="{{route('cart.update')}}" class="cart-product-form" method="POST">
                                 @csrf
                                 @method('PATCH')
                                 <input type="hidden" name="product_id" value="{{$product->id}}">
@@ -58,8 +58,6 @@
           <h4 class="mt-4 mb-4 pb-3 border-bottom"><strong>Productos relacionados</strong></h4>
           <div class="row">
             @foreach($relatedProducts as $relatedProduct)
-
-            <div class="col-lg-4 offset-3 offset-lg-0 col-6 col-lg mb-4 product can-order-by" >
               <div class="card border hover-shadow img-cursor">
                <a href="{{route('product.show',$relatedProduct->id)}}" class="text-reset">
                 <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"

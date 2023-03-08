@@ -58,10 +58,24 @@ class CartController extends Controller
         ]);
     }
 
+    public function destroyItem(int $productId)
+    {
+        $cart = $this->getCart();
+        if (!empty($cart['products'][$productId])) {
+            unset($cart['products'][$productId]);
+        }
+        $this->setCart($cart);
+
+
+        return response()->json([
+            'cart' => $cart
+        ]);
+    }
+
     public function update(Request $request)
     {
         $request->validate([
-            'method' => 'required|in:push,pop',
+            'method' => 'required|in:push,pop,destroy',
             'product_id' => 'required|integer',
             'quantity' => 'integer|min:0|max:99|nullable|required_if:method,push'
         ]);
@@ -81,6 +95,9 @@ class CartController extends Controller
                 return $this->api(true, 'Producto agregado al carrito');
             case 'pop':
                 $this->pop($productId);
+                return $this->api(true, 'Unidad eliminada del carrito');
+            case 'destroy':
+                $this->destroyItem($productId);
                 return $this->api(true, 'Producto eliminado del carrito');
         }
         return response()->json([
@@ -92,27 +109,27 @@ class CartController extends Controller
     {
         $request->validate([
             'discount_code' => 'required|exists:discount_codes,code'
+        ], [
+            'discount_code.exists' => 'El código de descuento no existe'
         ]);
         $cart = $this->getCart();
-        $cart['discounts'][] = $request->input('discount_code');
+        $cart['discounts'] = $request->input('discount_code');
         $this->setCart($cart);
+        session()->flash('message', 'Código de descuento agregado');
         return redirect()->route('cart.show');
     }
 
     public function removeDiscount(Request $request)
     {
-        $request->validate([
-            'discount_code' => 'required|exists:discount_codes,code'
-        ]);
         $cart = $this->getCart();
-        $cart['discounts'] = array_diff($cart['discounts'], [$request->input('discount_code')]);
+        $cart['discounts'] = null;
         $this->setCart($cart);
         return redirect()->route('cart.show');
     }
 
     public function destroy()
     {
-        $this->setCart(['products' => [], 'discounts' => []]);
+        $this->setCart(['products' => [], 'discounts' => null]);
         return redirect()->route('cart.show');
     }
 
@@ -125,10 +142,10 @@ class CartController extends Controller
         foreach ($products as $product) {
             $cartArray[] = ['product' => $product, 'quantity' => $cart[$product->id]];
         }
-        foreach ($cart['discounts'] as $discount) {
-            $discount = DiscountCode::where('code', $discount)->select('id', 'code', 'discount')->first();
+        if (!empty($cart['discounts'])) {
+            $discount = DiscountCode::where('code', $cart['discounts'])->select('id', 'code', 'discount')->first();
             if ($discount) {
-                $discountArray[] = ['discount' => $discount];
+                $discountArray = ['discount' => $discount, 'pre_discount' => $cart['total'], 'total' => $cart['total'] - $discount->value];
             }
         }
         $cartArray = ['products' => $cartArray, 'discounts' => $discountArray];
@@ -136,11 +153,15 @@ class CartController extends Controller
     }
 
 
-    public function api($success = true, $message = "")
+    public function api($success = false, $message = "")
     {
         $cart = $this->getCart();
+        if (empty($cart['products'])) {
+            $this->setCart(['products' => [], 'discounts' => null]);
+            $cart = $this->getCart();
+        }
         $products = Product::whereIn('id', array_keys($cart['products']))->where('is_active', '=', '1')
-            ->select('id', 'name', 'price', 'image')->get();
+            ->select('id', 'name','description', 'price', 'image')->get();
 
         //Map products image to attachment route
 
@@ -148,7 +169,7 @@ class CartController extends Controller
             $product->image = route('attachment.show', $product->image, false);
         });
 
-        $cartArray = ['products' => [], 'discounts' => []];
+        $cartArray = ['products' => [], 'discounts' => null];
         foreach ($products as $product) {
             $cartArray['products'][] = ['product' => $product, 'quantity' => $cart['products'][$product->id], 'total' => $product->price * $cart['products'][$product->id]];
         }
@@ -157,9 +178,9 @@ class CartController extends Controller
         foreach ($cartArray['products'] as $product) {
             $cartArray['total'] += $product['total'];
         }
-        $cart['discounts'] = $cart['discounts'] ?? [];
-        foreach ($cart['discounts'] as $discount) {
-            $discount = DiscountCode::where('code', $discount)->select('id', 'code', 'discount')->first();
+
+        if (!empty($cart['discounts'])) {
+            $discount = DiscountCode::where('code', "=" , $cart['discounts'])->where('is_active', "=", "1")->select('id', 'code', 'value', 'value_type')->first();
             if ($discount) {
                 $preDiscount = $cartArray['total'];
                 switch ($discount->value_type) {
@@ -170,8 +191,13 @@ class CartController extends Controller
                         $cartArray['total'] = $cartArray['total'] - $discount->value;
                         break;
                 }
-                $cartArray['discounts'][] = ['discount' => $discount, 'reduction' => $preDiscount - $cartArray['total']];
+                $cartArray['discounts'] = ['discount' => $discount, 'pre_discount' => $preDiscount, 'total' => $cartArray['total']];
             }
+        }
+
+        $cartArray['productCount'] = 0;
+        foreach ($cart['products'] as $product) {
+            $cartArray['productCount'] += $product;
         }
 
         if ($success) {
