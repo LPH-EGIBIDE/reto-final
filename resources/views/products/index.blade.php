@@ -23,9 +23,8 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                           <a href="?category={{$category->id}}" class="link-dark text-capitalize">{{$category->name}}</a>
                           <span class="badge badge-primary rounded-pill">
-                            {{$count->filter(function ($product) use ($category) {
-                              return $product->categories->contains('category_id', $category->id);
-                            })->count()}}</span>
+                         {{ $category->product->count() }}
+                          </span>
                         </li>
                         @endforeach
                       </ul>
@@ -65,7 +64,7 @@
                       <h5 class="card-title mb-2"><strong>{{$product->name}}</strong></h5>
                     <p class="card-text text-capitalize">
                       @foreach ($product->categories as $pCategory)
-                          {{$pCategory->category->name}}
+                          {{$categories->find($pCategory->category_id)->name}}
                       @endforeach
                     </p>
                     <h6 class="mb-3 act-price fs-5">{{$product->price}}€</h6>

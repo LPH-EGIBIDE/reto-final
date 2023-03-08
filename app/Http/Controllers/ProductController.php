@@ -14,15 +14,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
         $categories = Category::all();
         $count = Product::all();
         if (isset($_GET['category'])) {
             $products = Product::whereHas('categories', function ($query) {
                 $query->where('category_id', $_GET['category']);
-            })->get();
+            })->with('categories')->get();
         } else {
-            $products = Product::all();
+            $products = Product::whereHas('categories')->with(['categories', 'attachment'])->get();
         }
         return view('products.index', compact('products', 'categories', 'count'));
     }
@@ -86,7 +85,8 @@ class ProductController extends Controller
         $categories = Category::all();
         $products = Product::all();
         $productCategories = $product->categories;
-        return view('products.show' , compact('product', 'categories', 'products', 'productCategories'));
+        $relatedProducts = $this->relatedProducts($product,3);
+        return view('products.show' , compact('product', 'categories', 'products', 'productCategories', 'relatedProducts'));
     }
 
     /**
@@ -217,5 +217,12 @@ class ProductController extends Controller
         ], 200, [
             'Content-Type' => 'application/json',
         ], JSON_PRETTY_PRINT);
+    }
+    public function relatedProducts(Product $product, $quantity = 3){
+        $relatedProducts = Product::whereHas('categories', function ($query) use ($product) {
+            $query->whereIn('category_id', $product->categories->pluck('id'));
+        })->where('id', '!=', $product->id)->take($quantity)->get();
+        return $relatedProducts;
+
     }
 }

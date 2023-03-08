@@ -43,7 +43,7 @@
                                     <label class="form-label" for="typeNumber">Cantidad</label>
                                 </div>
                                 <div class="cart mt-4 align-items-center">
-                                    <input type="submit" class="btn btn-danger text-uppercase mr-2 px-4" value="Añadir al carro">
+                                    <button type="submit" class="btn btn-danger text-uppercase mr-2 px-4">Añadir al carro</button>
                                 </div>
                             </form>
                         </div>
@@ -57,29 +57,30 @@
         <div class="text-center container py-5">
           <h4 class="mt-4 mb-4 pb-3 border-bottom"><strong>Productos relacionados</strong></h4>
           <div class="row">
-            @for ($i = 1; $i <= 3; $i++)
+            @foreach($relatedProducts as $relatedProduct)
+
             <div class="col-lg-4 offset-3 offset-lg-0 col-6 col-lg mb-4 product can-order-by" >
               <div class="card border hover-shadow img-cursor">
-               <a href="{{route('product.show',$products->find($i))}}" class="text-reset">
+               <a href="{{route('product.show',$relatedProduct->id)}}" class="text-reset">
                 <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                   data-mdb-ripple-color="light">
-                  <img src="{{route('attachment.show.custom', [$products->find($i)->attachment->id, '350', '230'])}}" class="w-100" />
+                  <img src="{{route('attachment.show.custom', [$relatedProduct->attachment->id, '350', '230'])}}" class="w-100" />
                     <div class="hover-overlay">
                       <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title mb-3"><strong>{{$products->where('id',$i)->value('name')}}</strong></h5>
-                    <p class="text-capitalize">@foreach ($products->find($i)->categories as $pCategory)
+                    <h5 class="card-title mb-3"><strong>{{$relatedProduct->name}}</strong></h5>
+                    <p class="text-capitalize">@foreach ($relatedProduct->categories as $pCategory)
                       {{$pCategory->category->name}}
                     @endforeach</p>
-                  <h6 class="mb-3 act-price p-1">{{$products->where('id',$i)->value('price')}}€</h6>
+                  <h6 class="mb-3 act-price p-1">{{$relatedProduct->price}}€</h6>
                   <button type="button" class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-shopping"></i> Comprar</button>
                 </div>
                 </a>
               </div>
             </div>
-            @endfor
+              @endforeach
             </div>
           </div>
         </div>

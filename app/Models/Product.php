@@ -34,4 +34,6 @@ class Product extends Model
     {
         return $this->belongsTo(Attachment::class, 'image');
     }
+
+
 }
