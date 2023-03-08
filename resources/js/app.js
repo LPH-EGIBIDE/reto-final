@@ -1,1 +1,5 @@
-import * as mdb from 'mdb-ui-kit'; // lib
+import alerts from './alerts'; // custom
+
+window.addEventListener('load', () => {
+    alerts.testAlerts();
+});

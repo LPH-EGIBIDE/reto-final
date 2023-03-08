@@ -18,8 +18,11 @@
                     @endif
                     <div class="col-md-6">
                         <div class="product p-4">
-                            <form action="" method="POST">
+                            <form action="{{route('cart.update')}}" method="POST">
                                 @csrf
+                                @method('PATCH')
+                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                <input type="hidden" name="method" value="push">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex align-items-center"><a href="{{route('product.index')}}" class="ml-1 text-muted"><i class="fa fa-long-arrow-left p-1"></i> Volver</a> </div> <i class="fa fa-shopping-cart text-muted"></i>
                                 </div>
@@ -36,7 +39,7 @@
                                 </div>
                                 <p class="about">{{$product->description}}</p>
                                 <div class="form-outline">
-                                    <input type="number" id="typeNumber" class="form-control" value="1" min="1"/>
+                                    <input type="number" id="typeNumber" name="quantity" class="form-control" value="1" min="1"/>
                                     <label class="form-label" for="typeNumber">Cantidad</label>
                                 </div>
                                 <div class="cart mt-4 align-items-center">
@@ -55,8 +58,9 @@
           <h4 class="mt-4 mb-4 pb-3 border-bottom"><strong>Productos relacionados</strong></h4>
           <div class="row">
             @for ($i = 1; $i <= 3; $i++)
-            <div class="col-lg-4 col-md-12 mb-4">
+            <div class="col-lg-4 offset-3 offset-lg-0 col-6 col-lg mb-4 product can-order-by" >
               <div class="card border hover-shadow img-cursor">
+               <a href="{{route('product.show',$products->find($i))}}" class="text-reset">
                 <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                   data-mdb-ripple-color="light">
                   <img src="{{route('attachment.show.custom', [$products->find($i)->attachment->id, '350', '230'])}}" class="w-100" />
@@ -65,14 +69,14 @@
                     </div>
                 </div>
                 <div class="card-body">
-                  <a href="{{route('product.show',$products->find($i))}}" class="text-reset">
                     <h5 class="card-title mb-3"><strong>{{$products->where('id',$i)->value('name')}}</strong></h5>
-                  </a>
                     <p class="text-capitalize">@foreach ($products->find($i)->categories as $pCategory)
                       {{$pCategory->category->name}}
                     @endforeach</p>
                   <h6 class="mb-3 act-price p-1">{{$products->where('id',$i)->value('price')}}€</h6>
+                  <button type="button" class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-shopping"></i> Comprar</button>
                 </div>
+                </a>
               </div>
             </div>
             @endfor
