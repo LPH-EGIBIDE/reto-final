@@ -34,9 +34,11 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function show(int $id)
     {
         //
+        $order = Order::findOrFail($id);
+        return view('admin.order.show' , compact('order'));
     }
 
     /**
@@ -61,5 +63,44 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function adminIndex()
+    {
+        return view('admin.order.index');
+    }
+
+    public function filter(Request $request)
+    {
+        $request->validate([
+            'page' => 'nullable|integer',
+            'filtro' => 'nullable|string|max:255',
+        ]);
+
+        $page = $request->page ?? 1;
+        $perPage = 10;
+        $offset = ($page - 1) * $perPage;
+
+        $pedidos = Order::leftJoin('users', 'users.id', '=', 'orders.user_id')
+            ->leftJoin('discount_codes', 'discount_codes.id', '=', 'orders.discount_code_id')
+            ->where('users.name', 'like', "%{$request->filtro}%");
+        $total = $pedidos->count();
+        $pedidos = $pedidos->offset($offset)->limit($perPage)->select('users.name', 'discount_codes.code', 'orders.subtotal', 'orders.total', 'orders.status', 'orders.id as url')
+            ->orderBy('name', 'asc')
+            ->get();
+
+        $pedidos->map(function($order){
+            $order->url = route('admin.order.show', $order->url, false);
+        });
+
+        $page = intval($page) > ceil($total / $perPage) ? ceil($total / $perPage) : $page;
+        return response([
+            'data' => $pedidos,
+            'total' => $total,
+            'page' => $page,
+            'per_page' => $perPage,
+        ], 200, [
+            'Content-Type' => 'application/json',
+        ], JSON_PRETTY_PRINT);
     }
 }

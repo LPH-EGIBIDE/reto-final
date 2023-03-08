@@ -78,6 +78,18 @@ Route::middleware(['auth', 'can:is-admin'])->group(function () {
 
     //</editor-fold>
 
+    //<editor-fold desc="Rutas Pedidos">
+    Route::get('/admin/pedidos/lista', [App\Http\Controllers\OrderController::class, 'adminIndex'])->name('admin.order.adminIndex');
+    Route::get('/admin/pedidos/filtrar', [App\Http\Controllers\OrderController::class, 'filter'])->name('admin.order.filter');
+    Route::get('/admin/pedidos/{id}', [App\Http\Controllers\OrderController::class, 'show'])->name('admin.order.show')->whereNumber('id');
+    //</editor-fold>
+
+    //<editor-fold desc="Rutas Ver Usuarios">
+    Route::get('/admin/usuarios/lista', [App\Http\Controllers\UserController::class, 'adminIndex'])->name('admin.users.adminIndex');
+    Route::get('/admin/usuarios/filtrar', [App\Http\Controllers\UserController::class, 'filter'])->name('admin.users.filter');
+    Route::get('/admin/usuarios/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('admin.users.show')->whereNumber('id');
+    //</editor-fold>
+
     //<editor-fold desc="Rutas Codigos descuento">
     Route::get('/admin/descuento/registrar', [App\Http\Controllers\DiscountCodeController::class, 'create'])->name('admin.discount.create');
     Route::post('/admin/descuento/registrar', [App\Http\Controllers\DiscountCodeController::class, 'store'])->name('admin.discount.store');

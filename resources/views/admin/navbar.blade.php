@@ -46,10 +46,10 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pedidos</a>
+                    <a class="nav-link" href="{{route('admin.order.adminIndex')}}">Pedidos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Usuarios</a>
+                    <a class="nav-link" href="{{route('admin.users.adminIndex')}}">Usuarios</a>
                 </li>
             </ul>
             <!-- Left links -->
