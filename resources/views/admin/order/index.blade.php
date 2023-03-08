@@ -29,7 +29,7 @@
                 </form>
             </div>
         </div>
-        <div class="card-body bg-light table-responsive">
+        <div class="card-body bg-light table-responsive text-capitalize">
             <table class="table">
                 <thead class="text-primary">
                 <tr>

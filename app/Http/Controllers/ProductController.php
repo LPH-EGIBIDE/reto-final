@@ -72,7 +72,7 @@ class ProductController extends Controller
         }
 
         session()->flash('message', 'Producto creado correctamente');
-        return redirect()->route('admin.product.index');
+        return redirect()->route('admin.product.adminIndex');
 
 
     }

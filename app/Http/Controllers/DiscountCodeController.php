@@ -45,7 +45,7 @@ class DiscountCodeController extends Controller
         $discountCode->value_type = $request->value_type;
         $discountCode->save();
         session()->flash('message', 'Codigo de descuento creado correctamente');
-        return redirect()->route('admin.discount.index');
+        return redirect()->route('admin.discount.adminIndex');
 
     }
 

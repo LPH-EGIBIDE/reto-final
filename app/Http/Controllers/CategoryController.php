@@ -45,7 +45,7 @@ class CategoryController extends Controller
         $category->save();
 
         session()->flash('message', 'Categoria creada correctamente');
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.category.adminIndex');
     }
 
     /**

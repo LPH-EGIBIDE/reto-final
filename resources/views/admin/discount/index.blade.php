@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="card-body bg-light table-responsive">
-            <table class="table">
+            <table class="table text-capitalize">
                 <thead class="text-primary">
                 <tr>
                     <th scope="col" class="border-dark">Codigo</th>
