@@ -58,11 +58,12 @@
           <h4 class="mt-4 mb-4 pb-3 border-bottom"><strong>Productos relacionados</strong></h4>
           <div class="row">
             @foreach($relatedProducts as $relatedProduct)
+             <div class="col-lg-4 offset-1 offset-lg-0 col-10 col-lg mb-4 product can-order-by" >
               <div class="card border hover-shadow img-cursor">
                <a href="{{route('product.show',$relatedProduct->id)}}" class="text-reset">
                 <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                   data-mdb-ripple-color="light">
-                  <img src="{{route('attachment.show.custom', [$relatedProduct->attachment->id, '350', '230'])}}" class="w-100" />
+                  <img src="{{route('attachment.show.custom', [$relatedProduct->attachment->id, '700', '460'])}}" class="img-fluid" />
                     <div class="hover-overlay">
                       <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                     </div>

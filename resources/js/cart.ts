@@ -8,7 +8,7 @@ function formGrabber() {
                 event.preventDefault();
                 formToFetch(form, (data: any) => {
                     if (data.success) {
-                        alerts.showSuccessAlert("Success", data.success);
+                        alerts.showSuccessAlert("Exito", data.success);
                         setNavbarCartCount(data.cart.productCount)
                     } else if (data.errors) {
                         for (const key in data.errors) {

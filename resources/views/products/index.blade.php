@@ -10,21 +10,6 @@
 
 @section('content')
 
-<section>
-    <div class="container py-5">
-    <div class="row">
-        <div class="col-4 d-none d-lg-block">
-            <div class="card border border-primary shadow-0">
-                <div class="card-body">
-                    <div class="card-text">
-                      <h6 class="p-1 border-bottom"><strong>Cátegoria</strong></h6>
-                      <ul class="list-group list-group-light">
-                        @foreach ($categories as $category)
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                          <a href="?category={{$category->id}}" class="link-dark text-capitalize">{{$category->name}}</a>
-                          <span class="badge badge-primary rounded-pill">
-                          </span>
-                        </li>
     <section>
         <div class="container py-5">
             <div class="row">
@@ -39,9 +24,8 @@
                                             <a href="?category={{$category->id}}"
                                                class="link-dark text-capitalize">{{$category->name}}</a>
                                             <span class="badge badge-primary rounded-pill">
-                            {{$count->filter(function ($product) use ($category) {
-                              return $product->categories->contains('category_id', $category->id);
-                            })->count()}}</span>
+                                                {{ $category->product->count() }}
+                                            </span>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -74,8 +58,8 @@
                                         @if($product->attachment)
                                             <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light">
                                                 <img
-                                                    src="{{route('attachment.show.custom', [$product->attachment->id, '350', '250'])}}"
-                                                    class="w-100" alt="producto"/>
+                                                        src="{{route('attachment.show.custom', [$product->attachment->id, '350', '250'])}}"
+                                                        class="w-100" alt="producto"/>
                                                 <div class="hover-overlay">
                                                     <div class="mask"
                                                          style="background-color: rgba(251, 251, 251, 0.15);"></div>
@@ -86,7 +70,7 @@
                                             <h5 class="card-title "><strong>{{$product->name}}</strong></h5>
                                             <p class="card-text text-capitalize">
                                                 @foreach ($product->categories as $pCategory)
-                                                    {{$pCategory->category->name}}
+                                                    {{$categories->find($pCategory->category_id)->name}}
                                                 @endforeach
                                             </p>
                                             <h6 class="mb-3 act-price fs-5 mt-auto">{{$product->price}}€</h6>
@@ -96,7 +80,7 @@
                                 <div class="card">
                                     <div class="card-footer mt-auto">
                                         <a href="{{route('product.show',$product)}}" class="btn btn-primary btn-sm mt-auto"><i
-                                                class="fa-solid fa-cart-shopping"></i> Comprar
+                                                    class="fa-solid fa-cart-shopping"></i> Comprar
                                         </a>
                                     </div>
                                 </div>
