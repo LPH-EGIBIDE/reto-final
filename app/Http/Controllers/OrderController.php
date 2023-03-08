@@ -91,6 +91,7 @@ class OrderController extends Controller
 
         $pedidos->map(function($order){
             $order->url = route('admin.order.show', $order->url, false);
+            $order->code = $order->code ?? 'no utilizado';
         });
 
         $page = intval($page) > ceil($total / $perPage) ? ceil($total / $perPage) : $page;
