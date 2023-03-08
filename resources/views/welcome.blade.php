@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="row">
-        <section class="col mb-10">
+        <section class="col mb-5">
             <div class="p-5 text-center bg-image jumbotron-home"></div>
             <div class="container">
                 <div class="card mx-1 mx-md-5 text-center shadow-5-strong jumbotron-home-card">
