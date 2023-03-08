@@ -4,12 +4,16 @@
     @include('navbar')
 @endsection
 
+@section('scripts')
+    @vite('resources/js/productList.ts')
+@endsection
+
 @section('content')
 
 <section>
     <div class="container py-5">
     <div class="row">
-        <div class="col-3">
+        <div class="col-4 d-none d-lg-block">
             <div class="card border border-primary shadow-0">
                 <div class="card-body">
                     <div class="card-text">
@@ -30,11 +34,11 @@
                       <h6 class="p-1 border-bottom mt-2"><strong>Precio</strong></h6>
                       <ul class="list-group list-group-light">
                         <li class="list-group-item">
-                          <input class="form-check-input" type="radio" value="" id="mayorMenor" name="precio" aria-label="..." />
+                          <input class="form-check-input" type="radio" value="desc" name="menorMayor" aria-label="..." />
                           <label for="mayorMenor"> De mayor a menor </label>
                         </li>
                         <li class="list-group-item">
-                          <input class="form-check-input" type="radio" value="" id="menorMayor" name="precio" aria-label="..." />
+                          <input class="form-check-input" type="radio" value="asc"  name="menorMayor" aria-label="..." />
                           <label for="menorMayor"> De menor a mayor</label>
                         </li>
                       </ul>
@@ -43,30 +47,31 @@
                 </div>
               </div>
         </div>
-        <div class="col-9 text-center">
-            <div class="row">
+        <div class="col-8 text-center offset-2 offset-lg-0">
+            <div class="row" id="product-container">
               @foreach ($products as $product)
-              <div class="col-lg-3 col-md-12 mb-3">
-                <div class="card hover-shadow border img-cursor">
+              <div class="col-lg-3 col-md-12 mb-3 product-order-by" data-product-id="{{$product->id}}" data-product-price="{{$product->price}}">
+                <div class="card hover-shadow border img-cursor h-100">
+                 <a href="{{route('product.show',$product)}}" class="text-reset">
                     @if($product->attachment)
                   <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light">
-                    <img src="{{route('attachment.show.custom', [$product->attachment->id, '350', '250'])}}" class="w-100" />
+                    <img src="{{route('attachment.show.custom', [$product->attachment->id, '350', '250'])}}" class="w-100"  alt="producto"/>
                       <div class="hover-overlay">
                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                       </div>
                   </div>
                     @endif
                   <div class="card-body">
-                    <a href="{{route('product.show',$product)}}" class="text-reset">
                       <h5 class="card-title mb-2"><strong>{{$product->name}}</strong></h5>
-                    </a>
                     <p class="card-text text-capitalize">
                       @foreach ($product->categories as $pCategory)
                           {{$pCategory->category->name}}
                       @endforeach
                     </p>
-                    <h6 class="mb-3">{{$product->price}}€</h6>
+                    <h6 class="mb-3 act-price fs-5">{{$product->price}}€</h6>
+                    <button type="button" class="btn btn-primary btn-sm"><i class="fa-solid fa-cart-shopping"></i> Comprar</button>
                   </div>
+                </a>
                 </div>
               </div>
                   

@@ -15,7 +15,7 @@ class CartController extends Controller
 
     private function getCart()
     {
-        if (empty(auth()->user()->cart)) {
+        if (empty(auth()->user()->shopping_cart)) {
             $this->setCart(['products'=>[], 'discounts' => []]);
         }
 
@@ -28,22 +28,28 @@ class CartController extends Controller
         auth()->user()->save();
     }
 
-    public function push(int $productId)
+    public function push(int $productId, int $quantity = 1)
     {
         $cart = $this->getCart();
-        $cart['products'][$productId] = $cart['products'][$productId]++ ?? 0;
+        if (empty($cart['products'][$productId]))
+            $cart['products'][$productId] = 0;
+        $cart['products'][$productId] = $cart['products'][$productId] + $quantity;
         $this->setCart($cart);
 
-        return response()->json([
-            'cart' => $cart
-        ]);
 
     }
 
     public function pop(int $productId)
     {
         $cart = $this->getCart();
-        unset($cart['products'][$productId]);
+        if (!empty($cart['products'][$productId])) {
+            $newQuantity = $cart['products'][$productId] - 1;
+            if ($newQuantity <= 0) {
+                unset($cart['products'][$productId]);
+            } else {
+                $cart['products'][$productId] = $newQuantity;
+            }
+        }
         $this->setCart($cart);
 
 
@@ -56,7 +62,8 @@ class CartController extends Controller
     {
         $request->validate([
             'method' => 'required|in:push,pop',
-            'product_id' => 'required|integer'
+            'product_id' => 'required|integer',
+            'quantity' => 'integer|min:0|max:99|nullable|required_if:method,push'
         ]);
 
         $method = $request->input('method');
@@ -70,9 +77,17 @@ class CartController extends Controller
 
         switch ($method) {
             case 'push':
-                return $this->push($productId);
+                $this->push($productId, $request->input('quantity'));
+                return response()->json([
+                    'success' => 'Producto agregado al carrito',
+                    'cart' => $this->getCart()
+                ]);
             case 'pop':
-                return $this->pop($productId);
+                $this->pop($productId);
+                return response()->json([
+                    'success' => 'Producto eliminado del carrito',
+                    'cart' => $this->getCart()
+                ]);
         }
         return response()->json([
             'error' => 'Error al actualizar el carrito'
@@ -134,13 +149,14 @@ class CartController extends Controller
             ->select('id', 'name', 'price', 'image')->get();
 
         //Map products image to attachment route
-        array_map(function ($product) {
-            $product->image = route('attachment', ['id' => $product->image], false);
-        }, $products->toArray());
+
+        $products->map(function($product ){
+            $product->image = route('attachment.show', $product->image, false);
+        });
 
         $cartArray = ['products' => [], 'discounts' => []];
         foreach ($products as $product) {
-            $cartArray['products'][] = ['product' => $product, 'quantity' => $cart[$product->id], 'total' => $product->price * $cart[$product->id]];
+            $cartArray['products'][] = ['product' => $product, 'quantity' => $cart['products'][$product->id], 'total' => $product->price * $cart['products'][$product->id]];
         }
 
         $cartArray['total'] = 0;
