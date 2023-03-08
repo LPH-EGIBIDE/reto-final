@@ -78,7 +78,7 @@ class CartController extends Controller
         switch ($method) {
             case 'push':
                 $this->push($productId, $request->input('quantity'));
-                return $this->api(true, 'Producto eliminado del carrito');
+                return $this->api(true, 'Producto agregado al carrito');
             case 'pop':
                 $this->pop($productId);
                 return $this->api(true, 'Producto eliminado del carrito');
