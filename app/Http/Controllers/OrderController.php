@@ -12,7 +12,15 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $id = auth()->user()->id;
+        $statuses = [
+            'received' => ['Recibido', 'success'],
+            'processing' => ['En proceso', 'light'],
+            'prepaired' => ['Preparado', 'info'],
+            'cancelled' => ['Cancelado', 'danger']
+        ];  
+        $orders = Order::where('user_id', $id)->get(); 
+        return view('orders.index' , compact('orders', 'statuses'));
     }
 
     /**
@@ -39,6 +47,12 @@ class OrderController extends Controller
         //
         $order = Order::findOrFail($id);
         return view('admin.order.show' , compact('order'));
+    }
+
+    public function showUser(int $id)
+    {
+        $order = Order::findOrFail($id);
+        return view('orders.show' , compact('order'));
     }
 
     /**

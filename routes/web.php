@@ -48,6 +48,11 @@ Route::middleware(['auth'])->group(function () {
     //<editor-fold desc="Rutas User">
     Route::get('/perfil', [App\Http\Controllers\HomeController::class, 'profile'])->name('user.index');
     //</editor-fold>
+
+    //<editor-fold desc="Rutas Pedidos">
+    Route::get('/pedidos', [App\Http\Controllers\OrderController::class, 'index'])->name('order.index');
+    Route::get('/pedidos/{id}', [App\Http\Controllers\OrderController::class, 'showUser'])->name('order.show')->whereNumber('id');
+    //</editor-fold>
 });
 
 Route::middleware(['auth', 'can:is-admin'])->group(function () {

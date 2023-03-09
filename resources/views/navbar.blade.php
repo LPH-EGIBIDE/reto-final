@@ -55,7 +55,7 @@
                                 <a class="dropdown-item" href="{{route('user.index')}}">Mi Perfil</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Settings</a>
+                                <a class="dropdown-item" href="{{route('order.index')}}">Mis pedidos</a>
                             </li>
                             <li>
                                 <form action="{{route('logout')}}" method="post">
