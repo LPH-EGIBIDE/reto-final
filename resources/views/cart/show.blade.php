@@ -41,11 +41,13 @@
                   <span class="act-price"><strong><span id="cart-total">0</span>€</strong></span>
                 </li>
               </ul>
+                <form method="post" action="{{route('cart.checkout')}}">
+                    @csrf
                <div class="datos-envio my-3">
 
-                    <div class="form-outline datetimepicker" data-mdb-inline="true" data-mdb-disable-past="true" >
-                        <input type="text" class="form-control" id="datetimepickerInline" data-mdb-toggle="datetimepicker"/>
-                        <label for="datetimepickerInline" class="form-label">Fecha para recoger</label>
+                    <div class="form-outline datepicker" data-mdb-inline="true" data-mdb-disable-past="true" >
+                        <input type="text" class="form-control" id="datepickerInline" data-mdb-toggle="datepicker" name="date"/>
+                        <label for="datepickerInline" class="form-label">Fecha para recoger</label>
                     </div>
 
             </div>
@@ -53,7 +55,7 @@
               <button type="submit" class="btn btn-primary btn-lg btn-block">
                 Finalizar compra
               </button>
-
+                </form>
             </div>
           </div>
           <div class="card mb-4">

@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/carrito/api', [App\Http\Controllers\CartController::class, 'api'])->name('cart.api');
     Route::post('/carrito/api/discounts', [App\Http\Controllers\CartController::class, 'addDiscount'])->name('cart.addDiscount');
     Route::delete('/carrito/api/discounts', [App\Http\Controllers\CartController::class, 'removeDiscount'])->name('cart.removeDiscount');
+    Route::post('/carrito/finalizar', [App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
     //</editor-fold>
 
 

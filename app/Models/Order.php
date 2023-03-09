@@ -17,6 +17,7 @@ class Order extends Model
         'subtotal',
         'total',
         'status',
+        'date'
     ];
 
     public function user():BelongsTo
