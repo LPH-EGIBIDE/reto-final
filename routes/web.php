@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/producto', function () {
-    return view('products.show');
-});
 
 Route::get('/productos', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
 Route::get('/productos/{id}', [App\Http\Controllers\ProductController::class, 'showUser'])->name('product.show')->whereNumber('id');

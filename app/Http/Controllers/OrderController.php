@@ -19,7 +19,7 @@ class OrderController extends Controller
             'prepaired' => ['Preparado', 'info'],
             'cancelled' => ['Cancelado', 'danger']
         ];  
-        $orders = Order::where('user_id', $id)->get(); 
+        $orders = Order::where('user_id', $id)->orderBy('created_at', 'desc')->simplePaginate(5);
         return view('orders.index' , compact('orders', 'statuses'));
     }
 

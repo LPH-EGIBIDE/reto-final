@@ -284,7 +284,7 @@ class CartController extends Controller
         }
         session()->flash('message', 'Pedido realizado con éxito');
         $this->setCart(['products' => [], 'discounts' => null]);
-        return redirect()->route('home');
+        return redirect()->route('order.index');
     }
 
 

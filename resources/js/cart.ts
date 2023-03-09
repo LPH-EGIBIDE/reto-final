@@ -15,6 +15,9 @@ function formGrabber() {
                             alerts.showErrorAlert("Error", data.errors[key]);
                         }
                     } else {
+                        if (data.message === "Unauthenticated."){
+                            window.location.href = "/login";
+                        }
                         alerts.showErrorAlert("Error", "Ha ocurrido un error inesperado");
                     }
                 }, (error:string) => {
