@@ -185,11 +185,14 @@ class CartController extends Controller
                 $preDiscount = $cartArray['total'];
                 switch ($discount->value_type) {
                     case 'percent':
-                        $cartArray['total'] = $cartArray['total'] - ($cartArray['total'] * $discount->value / 100);
+                        $cartArray['total'] = round($cartArray['total'] - ($cartArray['total'] * $discount->value / 100), 2);
                         break;
                     case 'amount':
                         $cartArray['total'] = $cartArray['total'] - $discount->value;
                         break;
+                }
+                if ($cartArray['total'] < 0) {
+                    $cartArray['total'] = 0;
                 }
                 $cartArray['discounts'] = ['discount' => $discount, 'pre_discount' => $preDiscount, 'total' => $cartArray['total']];
             }

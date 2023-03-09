@@ -91,10 +91,10 @@ function fillCart(data: any) {
             cartList.innerHTML += cartListItemHtml;
         });
         if (data.cart.discounts != null){
-            document.getElementById('cart-discount')!.innerHTML = data.cart.discounts.discount.value;
+            document.getElementById('cart-discount')!.innerHTML = String("-"+Math.round((data.cart.discounts.pre_discount - data.cart.discounts.total) * 100) / 100);
             hideDiscountInput(data.cart.discounts.discount);
         }
-        document.getElementById('cart-total')!.innerHTML = data.cart.total;
+        document.getElementById('cart-total')!.innerHTML = String(Math.round(data.cart.total * 100) / 100);
         productControls();
     }
 }
