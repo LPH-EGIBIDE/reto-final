@@ -32,9 +32,14 @@ class DiscountCodeController extends Controller
         $request->validate([
             'code' => 'required|unique:discount_codes',
             'uses_left' => 'required|numeric|min:0',
-            'value' => 'required|numeric|min:0|max:100',
-            'description' => 'required|min:10',
             'value_type' => 'required|in:percent,amount',
+            'value' => ['required', 'numeric', 'min:0', function ($attribute, $value, $fail) use ($request) {
+                if ($request->value_type == 'percent' && $value > 100) {
+                    $fail('El valor no puede ser mayor a 100 si el tipo de valor es porcentaje');
+                }
+            }],
+            'description' => 'required|min:10',
+
 
         ]);
         $discountCode = new DiscountCode();
@@ -72,12 +77,17 @@ class DiscountCodeController extends Controller
      */
     public function update(Request $request, int $id)
     {
+        //Max value is 100 if value_type is percent
         $request->validate([
             'code' => 'required|unique:discount_codes,code,'.$id,
             'uses_left' => 'required|numeric|min:0',
-            'value' => 'required|numeric|min:0|max:100',
-            'description' => 'required|min:10',
             'value_type' => 'required|in:percent,amount',
+            'value' => ['required', 'numeric', 'min:0', function ($attribute, $value, $fail) use ($request) {
+                if ($request->value_type == 'percent' && $value > 100) {
+                    $fail('El valor no puede ser mayor a 100 si el tipo de valor es porcentaje');
+                }
+            }],
+            'description' => 'required|min:10',
             'is_active' => 'boolean',
         ]);
 

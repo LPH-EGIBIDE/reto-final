@@ -52,7 +52,7 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                     Descuento
-                  <span><span id="cart-discount">0</span>€</span>
+                  <span class="text-success"><span id="cart-discount">0</span>€</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                   <div>
@@ -61,7 +61,7 @@
                       <p class="mb-0">(IVA incluido)</p>
                     </strong>
                   </div>
-                  <span><strong><span id="cart-total">0</span>€</strong></span>
+                  <span class="act-price"><strong><span id="cart-total">0</span>€</strong></span>
                 </li>
               </ul>
 
