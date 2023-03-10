@@ -30,7 +30,7 @@ function init(){
 }
 
 function getOrderInfo(id:number):any{
-    alerts.showInfoAlert("Cargando", "Cargando información del pedido con id: "+id);
+    alerts.showInfoAlert("Cargando", "Cargando información del pedido");
     let form = document.getElementById('order-controls') as HTMLFormElement;
     if (form) {
         let orderId = document.getElementById('order-id') as HTMLInputElement;
