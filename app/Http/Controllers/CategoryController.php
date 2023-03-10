@@ -105,7 +105,7 @@ class CategoryController extends Controller
         }
         $category->delete();
         session()->flash('message', 'Categoria eliminada correctamente');
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.category.adminIndex');
 
     }
 

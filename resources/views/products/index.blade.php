@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-
+@include('alerts')
     <section>
         <div class="container py-5">
             <div class="row">

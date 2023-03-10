@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('alerts')
     <div class="row mt-lg-5 my-3">
         <div class="col-lg-10 offset-lg-1">
             <div class="card shadow-card hover-shadow">

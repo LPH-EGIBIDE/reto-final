@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('alerts')
 <table class="table align-middle my-5 bg-white">
     <thead class="bg-light">
       <tr>

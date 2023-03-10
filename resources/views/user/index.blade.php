@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('alerts')
     <section>
         <div class="container my-3" >
             <div class="row">

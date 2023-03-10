@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+@include('alerts')
     <div class="card my-3">
         <div class="card-header d-flex align-items-center justify-content-between p-3">
             <h5 class="my-auto text-primary fs-4 d-none d-lg-block">Productos</h5>

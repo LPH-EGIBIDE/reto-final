@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-
+@include('alerts')
     <div class="card shadow-card hover-shadow mt-5">
         <div class="card-header">Categoria</div>
         <div class="card-body">
