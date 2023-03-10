@@ -35,12 +35,12 @@
                                 <ul class="list-group list-group-light">
                                     <li class="list-group-item">
                                         <input class="form-check-input" type="radio" value="desc" name="menorMayor"
-                                               aria-label="..."/>
+                                               aria-label="..." id="mayorMenor"/>
                                         <label for="mayorMenor"> De mayor a menor </label>
                                     </li>
                                     <li class="list-group-item">
                                         <input class="form-check-input" type="radio" value="asc" name="menorMayor"
-                                               aria-label="..."/>
+                                               aria-label="..." id="menorMayor"/>
                                         <label for="menorMayor"> De menor a mayor</label>
                                     </li>
                                 </ul>

@@ -78,7 +78,7 @@ function generateTableRows(items: any[]): string{
                 continue;
             }
             let cell = document.createElement('td');
-            cell.innerText = item[key];
+            cell.innerHTML = item[key];
             row.appendChild(cell);
         }
         tableRows += row.outerHTML;

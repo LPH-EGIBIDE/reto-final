@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-between pb-1">
+                <div class="d-flex justify-content-between pb-1 mt-2">
                     <p class="small">Subtotal</p>
                     <p class="small">€<span class="order-modal-subtotal"></span></p>
                 </div>

@@ -86,12 +86,14 @@ Route::middleware(['auth', 'can:is-admin'])->group(function () {
     Route::get('/admin/pedidos/lista', [App\Http\Controllers\OrderController::class, 'adminIndex'])->name('admin.order.adminIndex');
     Route::get('/admin/pedidos/filtrar', [App\Http\Controllers\OrderController::class, 'filter'])->name('admin.order.filter');
     Route::get('/admin/pedidos/{id}', [App\Http\Controllers\OrderController::class, 'show'])->name('admin.order.show')->whereNumber('id');
+    Route::post('/admin/pedidos/{id}/estado', [App\Http\Controllers\OrderController::class, 'changeStatus'])->name('admin.order.changestatus')->whereNumber('id');
     //</editor-fold>
 
     //<editor-fold desc="Rutas Ver Usuarios">
     Route::get('/admin/usuarios/lista', [App\Http\Controllers\UserController::class, 'adminIndex'])->name('admin.users.adminIndex');
     Route::get('/admin/usuarios/filtrar', [App\Http\Controllers\UserController::class, 'filter'])->name('admin.users.filter');
     Route::get('/admin/usuarios/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('admin.users.show')->whereNumber('id');
+    Route::get('/admin/usuarios/{id}/restablecer', [App\Http\Controllers\UserController::class, 'resetPassword'])->name('admin.users.resetpassword')->whereNumber('id');
     //</editor-fold>
 
     //<editor-fold desc="Rutas Codigos descuento">

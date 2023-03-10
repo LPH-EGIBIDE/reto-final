@@ -3,7 +3,9 @@
     <!-- Container wrapper -->
     <div class="container">
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="{{route('home')}}">Vista Normal</a>
+        <a class="navbar-brand" href="{{route('home')}}">
+            <img src="{{Vite::asset('resources/images/logo_egibide_white.png')}}" height="42" alt="" loading="lazy"/>
+        </a>
         <!-- Toggle button -->
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
@@ -13,7 +15,7 @@
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('admin.admin')}}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('admin.admin')}}">Inicio</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">

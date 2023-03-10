@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-2">
     <div class="errors mb-3 col-12">
         @if($errors->any())
             @foreach($errors->all() as $error)

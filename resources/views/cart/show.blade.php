@@ -53,7 +53,7 @@
             </div>
 
               <button type="submit" class="btn btn-primary btn-lg btn-block">
-                Finalizar compra
+                  <i class="fa-solid fa-basket-shopping"></i> &nbsp;Finalizar compra
               </button>
                 </form>
             </div>
@@ -68,8 +68,7 @@
                         <div class="input-group mb-3 form-outline" >
                             <input type="text" class="form-control" name="discount_code"  aria-describedby="button-addon2">
                             <label class="form-label" for="form1">Código de descuento</label>
-                            <button class="btn btn-primary" type="submit" id="button-addon2">Aplicar</button>
-
+                            <button class="btn btn-primary" type="submit" id="button-addon2"><i class="fa-solid fs-6 fa-circle-plus"></i></button>
                         </div>
                     </form>
 
@@ -78,7 +77,7 @@
                         @method('DELETE')
                         <div class="input-group mb-3 " id="discount-input">
                             <input type="text" class="form-control" name="discount_code"  aria-describedby="button-addon2">
-                            <button class="btn btn-danger" type="submit" id="button-addon2">Eliminar</button>
+                            <button class="btn btn-danger" type="submit" id="button-addon2"><i class="fa-solid fs-6 fa-circle-xmark"></i></button>
 
                         </div>
                     </form>

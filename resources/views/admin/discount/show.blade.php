@@ -76,6 +76,10 @@
                                     <button type="submit" class="btn btn-danger btn-block">Borrar</button>
                                 </form>
                             </div>
+                            <div class="col-12 mt-3">
+                                <a href="{{route('admin.discount.adminIndex')}}" class="btn btn-secondary w-100 fw-bold">Volver
+                                    <i class="fa-solid fa-turn-down-left"></i></a>
+                            </div>
                         </div>
                     </div>
             </div>

@@ -126,12 +126,13 @@ class CategoryController extends Controller
 
         $categorias = Category::where('name', 'like', '%'.$request->filtro.'%');
         $total = $categorias->count();
-        $categorias = $categorias->offset($offset)->limit($perPage)->select('name', 'is_homepage','id as url')
+        $categorias = $categorias->offset($offset)->limit($perPage)->select('name', 'is_homepage','id as product_count', 'id as url')
             ->orderBy('name', 'asc')
             ->get();
 
         $categorias->map(function($categoria ){
             $categoria ->url = route('admin.category.show', $categoria ->url, false);
+            $categoria->product_count = Category::findOrFail($categoria->product_count)->product->count();
             $categoria->is_homepage = $categoria ->is_homepage ? 'Si' : 'No';
         });
 

@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class CartController extends Controller
 {
@@ -269,6 +270,7 @@ class CartController extends Controller
         } else {
             $order->subtotal = $cartArray['total'];
         }
+        $order->date = Carbon::createFromFormat('d/m/Y', $request->input('date'))->format('Y-m-d');
         $order->total = $cartArray['total'];
         $order->status = 'received';
         $order->save();

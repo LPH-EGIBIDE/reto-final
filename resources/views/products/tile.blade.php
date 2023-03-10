@@ -28,7 +28,7 @@
                                         @foreach($product->categories as $product_category)
                                         <div class="mb-2 text-muted small">
                                             <span class="text-primary"> • </span>
-                                            <span>{{$product_category->category->name}}<br /></span>
+                                            <span class="text-capitalize">{{$product_category->category->name}}<br /></span>
                                         </div>
                                         @endforeach
 
@@ -39,7 +39,7 @@
                                         <h4 class="mb-1 me-1">€{{$product->price}}</h4>
                                     </div>
                                     <div class="d-flex flex-column mt-4">
-                                        <a href="{{route('product.show',$product)}}" class="btn btn-primary btn-sm"><i class="fa-solid fa-cutlery"></i> Detalles</a>
+                                        <a href="{{route('product.show',$product)}}" class="btn btn-primary btn-sm"><i class="fa-solid fa-cutlery"></i>&nbsp; Detalles</a>
                                     </div>
                                 </div>
                             </div>
