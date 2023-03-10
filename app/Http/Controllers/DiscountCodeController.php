@@ -146,6 +146,7 @@ class DiscountCodeController extends Controller
 
         $codigos->map(function($codigo ){
             $codigo ->url = route('admin.discount.show', $codigo ->url, false);
+            $codigo ->value_type = $codigo ->value_type == 'percent' ? 'Porcentaje' : 'Dinero';
             $codigo->is_active = boolval($codigo ->is_active) ? 'Si' : 'No';
         });
 

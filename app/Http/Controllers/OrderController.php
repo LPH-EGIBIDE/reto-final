@@ -5,21 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class OrderController extends Controller
 {
+    public static   $statuses = [
+        'received' => ['Recibido', 'primary'],
+        'processing' => ['En proceso', 'warning'],
+        'prepaired' => ['Preparado', 'success'],
+        'cancelled' => ['Cancelado', 'danger']
+    ];
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $id = auth()->user()->id;
-        $statuses = [
-            'received' => ['Recibido', 'success'],
-            'processing' => ['En proceso', 'light'],
-            'prepaired' => ['Preparado', 'info'],
-            'cancelled' => ['Cancelado', 'danger']
-        ];
+        $statuses = self::$statuses;
         $orders = Order::where('user_id', $id)->orderBy('created_at', 'desc')->simplePaginate(5);
         return view('orders.index' , compact('orders', 'statuses'));
     }
@@ -47,7 +49,9 @@ class OrderController extends Controller
     {
         //
         $order = Order::findOrFail($id);
-        return view('admin.order.show' , compact('order'));
+        $order->date = Carbon::parse($order->date)->format('d/m/Y');
+        $pedidoCreado= Carbon::parse($order->created_at)->format('d/m/Y');
+        return view('admin.order.show' , compact('order', 'pedidoCreado'));
     }
 
     public function showUser(int $id)
@@ -69,7 +73,7 @@ class OrderController extends Controller
         $request->validate([
             'id' => 'required|integer|exists:orders,id'
         ]);
-        $order = Order::findOrFail($request->id)->with('discountCode')->first();
+        $order = Order::findOrFail($request->id);
         try{
             $this->authorize('view-order', $order);
         } catch (AuthorizationException $e){
@@ -83,7 +87,7 @@ class OrderController extends Controller
             'subtotal' => $order->subtotal,
             'total' => $order->total,
             'status' => $order->status,
-            'date' => $order->date,
+            'date' => Carbon::parse($order->date)->format('d/m/Y'),
             'discount_code' => $order->discountCode->code ?? null,
             'products' => []
         ];
@@ -143,6 +147,9 @@ class OrderController extends Controller
 
         $pedidos->map(function($order){
             $order->url = route('admin.order.show', $order->url, false);
+            $statuses = self::$statuses;
+            $order->status = "<span class=\"badge badge-{$statuses[$order->status][1]} rounded-pill d-inline\">{$statuses[$order->status][0]}</span>";
+
             $order->code = $order->code ?? 'no utilizado';
         });
 
@@ -155,5 +162,19 @@ class OrderController extends Controller
         ], 200, [
             'Content-Type' => 'application/json',
         ], JSON_PRETTY_PRINT);
+    }
+
+    public function changeStatus(int $id, Request $request){
+        $request->validate([
+            'status' => 'required|string|in:received,processing,prepaired,cancelled'
+        ], [
+            'status.in' => 'El estado seleccionado no es válido'
+        ]);
+
+        $order = Order::findOrFail($id);
+        $order->status = $request->status;
+        $order->save();
+        session()->flash('message', 'Estado actualizado correctamente');
+        return redirect()->route('admin.order.show', $id);
     }
 }

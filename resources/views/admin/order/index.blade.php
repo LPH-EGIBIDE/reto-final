@@ -37,7 +37,7 @@
                     <th scope="col" class="border-dark">Codigo de descuento</th>
                     <th scope="col" class="border-dark">Subtotal</th>
                     <th scope="col" class="border-dark">Total</th>
-                    <th scope="col" class="border-dark">Status</th>
+                    <th scope="col" class="border-dark">Estado</th>
                     <th scope="col" class="border-dark">Acciones</th>
                 </tr>
                 </thead>

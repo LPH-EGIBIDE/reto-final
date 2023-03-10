@@ -43,7 +43,7 @@
                                     <label class="form-label" for="typeNumber">Cantidad</label>
                                 </div>
                                 <div class="cart mt-4 align-items-center">
-                                    <button type="submit" class="btn btn-danger text-uppercase mr-2 px-4">Añadir al carro</button>
+                                    <button type="submit" class="btn btn-danger text-uppercase mr-2 px-4">Añadir al carro &nbsp;<i class="fa-solid fa-cart-circle-plus fs-6"></i></button>
                                 </div>
                             </form>
                         </div>

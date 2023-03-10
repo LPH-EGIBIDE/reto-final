@@ -55,4 +55,13 @@ class UserController extends Controller
             'Content-Type' => 'application/json',
         ], JSON_PRETTY_PRINT);
     }
+
+    public function resetPassword(int $id){
+        //send email to user with reset password link
+        $user = User::findOrFail($id);
+        $user->sendPasswordResetNotification($user->createToken('password-reset')->plainTextToken);
+        session()->flash('message', 'Email enviado correctamente');
+        return redirect()->route('admin.users.show', $user->id);
+
+    }
 }

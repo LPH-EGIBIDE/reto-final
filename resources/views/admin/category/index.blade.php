@@ -33,7 +33,8 @@
                 <thead class="text-primary">
                 <tr>
                     <th scope="col" class="border-dark">Nombre</th>
-                    <th scope="col" class="border-dark">Pagina Principal</th>
+                    <th scope="col" class="border-dark">Pagina principal</th>
+                    <th scope="col" class="border-dark">Nº Productos</th>
                     <th scope="col" class="border-dark">Acciones</th>
                 </tr>
                 </thead>
@@ -42,6 +43,7 @@
                     <tr class="loading-skeleton">
                         <td><p>Primero</p></td>
                         <td><p>si</p></td>
+                        <td><p>100</p></td>
                         <td><p>Hola mama</p></td>
                     </tr>
                 @endfor

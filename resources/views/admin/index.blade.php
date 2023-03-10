@@ -36,9 +36,9 @@
                 <div class="card-body my-3">
                     <canvas
                             data-mdb-chart="bar"
-                            data-mdb-dataset-label="Traffic"
-                            data-mdb-labels="['Monday', 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday' , 'Saturday' , 'Sunday ']"
-                            data-mdb-dataset-data="[2112, 2343, 2545, 3423, 2365, 1985, 987]"
+                            data-mdb-dataset-label="Pedidos"
+                            data-mdb-labels="['Lunes', 'Martes' , 'Miercoles' , 'Jueves' , 'Viernes' , 'Sabado' , 'Domingo ']"
+                            data-mdb-dataset-data="[0, 10, 20, 30, 30, 60, 100]"
                     ></canvas>
                 </div>
             </div>
