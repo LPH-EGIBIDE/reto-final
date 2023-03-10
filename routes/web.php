@@ -87,6 +87,7 @@ Route::middleware(['auth', 'can:is-admin'])->group(function () {
     Route::get('/admin/pedidos/filtrar', [App\Http\Controllers\OrderController::class, 'filter'])->name('admin.order.filter');
     Route::get('/admin/pedidos/{id}', [App\Http\Controllers\OrderController::class, 'show'])->name('admin.order.show')->whereNumber('id');
     Route::post('/admin/pedidos/{id}/estado', [App\Http\Controllers\OrderController::class, 'changeStatus'])->name('admin.order.changestatus')->whereNumber('id');
+    Route::get('/admin/pedidos/estadisticas', [App\Http\Controllers\OrderController::class, 'stats'])->name('admin.order.stats');
     //</editor-fold>
 
     //<editor-fold desc="Rutas Ver Usuarios">

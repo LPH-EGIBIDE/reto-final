@@ -177,4 +177,34 @@ class OrderController extends Controller
         session()->flash('message', 'Estado actualizado correctamente');
         return redirect()->route('admin.order.show', $id);
     }
+
+    public function stats()
+    {
+        $pedidos = Order::selectRaw('count(*) as pedidos, date(created_at) as fecha')
+            ->groupBy('fecha')
+            ->where('created_at', '>=', Carbon::now()->startOfWeek(Carbon::MONDAY))
+            ->where('created_at', '<=', Carbon::now()->endOfWeek(Carbon::SUNDAY))
+            ->orderBy('fecha', 'asc')
+
+            ->get();
+
+        $data = [];
+        foreach ($pedidos as $pedido){
+            //foreach every day of the week
+            for($i = 0; $i < 7; $i++){
+                $date = Carbon::now()->startOfWeek(Carbon::MONDAY)->addDays($i)->format('Y-m-d');
+                if(!isset($data[$date])){
+                    $data[$date] = 0;
+                }
+                if($pedido->fecha == $date){
+                    $data[$date] = $pedido->pedidos;
+                }
+            }
+        }
+        //Remove the keys
+        $data = array_values($data);
+        return response()->json([
+            'data' => $data
+        ]);
+    }
 }

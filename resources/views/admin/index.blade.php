@@ -34,15 +34,11 @@
                     <span class="card-title text-primary m-0 fs-2 fw-bold">Pedidos Semanales</span>
                 </div>
                 <div class="card-body my-3">
-                    <canvas
-                            data-mdb-chart="bar"
-                            data-mdb-dataset-label="Pedidos"
-                            data-mdb-labels="['Lunes', 'Martes' , 'Miercoles' , 'Jueves' , 'Viernes' , 'Sabado' , 'Domingo ']"
-                            data-mdb-dataset-data="[0, 10, 20, 30, 30, 60, 100]"
-                    ></canvas>
+                    <doughnut-chart></doughnut-chart>
                 </div>
             </div>
     </div>
+
 @endsection
 
 @section('footer')
