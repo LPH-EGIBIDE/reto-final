@@ -38,7 +38,7 @@ function filterElement(filterForm: HTMLFormElement, itemTable: HTMLTableSectionE
     xhr.send(formData);
 }
 
-function generateTableRows(items: object[]): string{
+function generateTableRows(items: any[]): string{
     let tableRows = '';
     let totalItems = paginationActive ? items.length : 4;
     for (let i = 0; i < totalItems; i++) {
