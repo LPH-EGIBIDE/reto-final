@@ -1,4 +1,5 @@
 import alerts from "./alerts";
+import utils from "./utils";
 function formGrabber() {
     //Get forms with class cart-product-form and add event listener
     let forms = document.querySelectorAll('.cart-product-form');
@@ -6,7 +7,7 @@ function formGrabber() {
         if (form instanceof HTMLFormElement) {
             form.addEventListener('submit', (event) => {
                 event.preventDefault();
-                formToFetch(form, (data: any) => {
+                utils.formToFetch(form, (data: any) => {
                     if (data.success) {
                         alerts.showSuccessAlert("Exito", data.success);
                         setNavbarCartCount(data.cart.productCount)
@@ -36,31 +37,7 @@ function setNavbarCartCount(count: number) {
     }
 }
 
-function formToFetch(form: HTMLFormElement, callback: Function, errorCallback: Function) {
-    //Get form action
-    const action = form.getAttribute('action') || '';
-    //Get form method
-    const method = form.getAttribute('method') || 'POST';
-    //Get form data
-    const data = new FormData(form);
-    //Send data to fetch
-    fetch(action, {
-        method: method,
-        body: data,
-        headers: {
-            'X-Requested-With': 'XMLHttpRequest',
-            'Accept': 'application/json'
-        }
-    })
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        callback(data);
-    }).catch(error => {
-        errorCallback(error);
-    })
-}
+
 
 function fetchCart() {
     fetch('/carrito/api', {
@@ -142,7 +119,7 @@ function productEdit(productId: number, method:string) {
         productIdInput.value = productId.toString();
         let methodInput = form.querySelector('input[name="method"]')! as HTMLInputElement;
         methodInput.value = method;
-        formToFetch(form, (data: any) => {
+        utils.formToFetch(form, (data: any) => {
             if (data.success) {
                 alerts.showSuccessAlert("Exito", data.success);
                 fetchCart();

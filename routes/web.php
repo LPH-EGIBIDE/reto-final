@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
     //<editor-fold desc="Rutas Pedidos">
     Route::get('/pedidos', [App\Http\Controllers\OrderController::class, 'index'])->name('order.index');
     Route::get('/pedidos/{id}', [App\Http\Controllers\OrderController::class, 'showUser'])->name('order.show')->whereNumber('id');
+    Route::post('/pedidos/api', [App\Http\Controllers\OrderController::class, 'api'])->name('order.api');
     //</editor-fold>
 });
 

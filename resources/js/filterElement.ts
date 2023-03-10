@@ -26,10 +26,10 @@ function filterElement(filterForm: HTMLFormElement, itemTable: HTMLTableSectionE
             if (data.page <= Math.ceil(data.total / data.per_page)) {
                 if (data.data.length > 0) {
                     itemTable.innerHTML = generateTableRows(data.data);
-                    document.getElementById('noItems').classList.add('d-none');
+                    document.getElementById('noItems')?.classList.add('d-none');
                 } else if (data.page == 0) {
                     itemTable.innerHTML = "";
-                    document.getElementById('noItems').classList.remove('d-none');
+                    document.getElementById('noItems')?.classList.remove('d-none');
                 }
             }
 

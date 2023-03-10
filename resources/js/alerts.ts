@@ -1,3 +1,4 @@
+// @ts-ignore
 import * as mdb from 'mdb-ui-kit';
 
 function generateAlert(color: string, title: string, message: string, id: string){

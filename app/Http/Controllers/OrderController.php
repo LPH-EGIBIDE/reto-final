@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -18,7 +19,7 @@ class OrderController extends Controller
             'processing' => ['En proceso', 'light'],
             'prepaired' => ['Preparado', 'info'],
             'cancelled' => ['Cancelado', 'danger']
-        ];  
+        ];
         $orders = Order::where('user_id', $id)->orderBy('created_at', 'desc')->simplePaginate(5);
         return view('orders.index' , compact('orders', 'statuses'));
     }
@@ -61,6 +62,43 @@ class OrderController extends Controller
     public function edit(Order $order)
     {
         //
+    }
+
+
+    public function api(Request $request){
+        $request->validate([
+            'id' => 'required|integer|exists:orders,id'
+        ]);
+        $order = Order::findOrFail($request->id)->with('discountCode')->first();
+        try{
+            $this->authorize('view-order', $order);
+        } catch (AuthorizationException $e){
+            return response()->json(['errors' => ['auth' => 'No tienes permiso para ver este pedido']], 403);
+        }
+        $json = [
+            'success' => true,
+            'id' => $order->id,
+            'user_id' => $order->user_id,
+            'discount_code_id' => $order->discount_code_id,
+            'subtotal' => $order->subtotal,
+            'total' => $order->total,
+            'status' => $order->status,
+            'date' => $order->date,
+            'discount_code' => $order->discountCode->code ?? null,
+            'products' => []
+        ];
+
+        foreach ($order->orderDetails as $orderDetail) {
+            $json['products'][] = [
+                'name' => $orderDetail->product->name,
+                'price' => $orderDetail->product->price,
+                'quantity' => $orderDetail->quantity,
+                'total' => $orderDetail->quantity * $orderDetail->product->price
+            ];
+        }
+
+        return response()->json($json);
+
     }
 
     /**
