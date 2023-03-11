@@ -39,13 +39,19 @@
                                     </div>
                                 </div>
                                 <p class="about">{{$product->description}}</p>
-                                <div class="form-outline">
-                                    <input type="number" id="typeNumber" name="quantity" class="form-control" value="1" min="1"/>
-                                    <label class="form-label" for="typeNumber">Cantidad</label>
-                                </div>
-                                <div class="cart mt-4 align-items-center">
-                                    <button type="submit" class="btn btn-danger text-uppercase mr-2 px-4">Añadir al carro &nbsp;<i class="fa-solid fa-cart-circle-plus fs-6"></i></button>
-                                </div>
+                                @if($product->stock < 0)
+                                    <div class="alert alert-danger" role="alert">
+                                        No hay stock de este producto
+                                    </div>
+                                @else
+                                    <div class="form-outline">
+                                        <input type="number" id="typeNumber" name="quantity" class="form-control" value="1" min="1" max="{{$product->stock}}"/>
+                                        <label class="form-label" for="typeNumber">Cantidad</label>
+                                    </div>
+                                    <div class="cart mt-4 align-items-center">
+                                        <button type="submit" class="btn btn-danger text-uppercase mr-2 px-4">Añadir al carro &nbsp;<i class="fa-solid fa-cart-circle-plus fs-6"></i></button>
+                                    </div>
+                                @endif
                             </form>
                         </div>
                     </div>
