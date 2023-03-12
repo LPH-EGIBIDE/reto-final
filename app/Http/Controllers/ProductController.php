@@ -122,12 +122,14 @@ class ProductController extends Controller
             'description' => 'required|min:10',
             'image' => 'image',
             'stock' => 'required|numeric|min:0',
-            'categories' => 'required|exists:categories,id'
+            'categories' => 'required|exists:categories,id',
+            'is_homepage' => 'boolean'
         ]);
 
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
+        $product->is_homepage = boolval($request->is_homepage);
         $product->stock = $request->stock;
         $file = $request->file('image');
         if ($file){

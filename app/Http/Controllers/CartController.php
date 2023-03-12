@@ -114,7 +114,7 @@ class CartController extends Controller
 
         $cartArray = ['products' => [], 'discounts' => null];
         foreach ($products as $product) {
-            $cartArray['products'][] = ['product' => $product, 'quantity' => $cart['products'][$product->id], 'total' => $product->price * $cart['products'][$product->id]];
+            $cartArray['products'][] = ['product' => $product, 'quantity' => $cart['products'][$product->id], 'total' => round($product->price * $cart['products'][$product->id], 2)];
         }
 
         $cartArray['total'] = 0;
@@ -270,7 +270,7 @@ class CartController extends Controller
                 $this->setCart($cart);
                 return redirect()->route('cart.show')->withErrors(['No hay suficiente stock del producto ' . $product->name]);
             }
-            $cartArray['products'][] = ['product' => $product, 'quantity' => $cart['products'][$product->id], 'total' => $product->price * $cart['products'][$product->id]];
+            $cartArray['products'][] = ['product' => $product, 'quantity' => $cart['products'][$product->id], 'total' => round($product->price * $cart['products'][$product->id], 2)];
         }
 
         $cartArray['total'] = 0;

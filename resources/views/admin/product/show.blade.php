@@ -18,12 +18,18 @@
                             <label class="form-label" for="productName">Nombre producto</label>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-outline">
                             <input type="text" id="price" class="form-control" disabled value="{{$product->price}}"/>
                             <label class="form-label" for="price">Precio</label>
                         </div>
                     </div>
+                    <div class="col-md-2">
+                        <div class="form-check form-switch">
+                                <input class="form-check-input" disabled name="is_homepage" type="checkbox" @if($product->is_homepage) checked @endif role="switch" id="paginaPrincipal" value="1" />
+                                <label class="form-check-label" for="paginaPrincipal">Pagina principal</label>
+                            </div>
+                        </div>
                 </div>
 
                 <div class="row mb-4">
@@ -75,7 +81,11 @@
                             </form>
                         </div>
                         <div class="col-12 mt-3">
-                            <a href="{{url()->previous()}}" class="btn btn-secondary w-100 fw-bold">Volver
+                        @php
+                        $url = url()->previous();
+                        $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
+                        @endphp
+                            <a href="@if($route == 'admin.product.edit'){{route('admin.product.adminIndex')}}@else{{url()->previous()}}@endif" class="btn btn-secondary w-100 fw-bold">Volver
                                 <i class="fa-solid fa-turn-down-left"></i></a>
                         </div>
                     </div>

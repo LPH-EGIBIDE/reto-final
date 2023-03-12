@@ -20,10 +20,16 @@
                                 <label class="form-label" for="productName">Nombre producto</label>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-outline">
                                 <input type="text" id="price" name="price" value="{{$product->price}}" class="form-control" required />
                                 <label class="form-label" for="price">Precio</label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                        <div class="form-check form-switch">
+                                <input class="form-check-input" name="is_homepage" type="checkbox" @if($product->is_homepage) checked @endif role="switch" id="paginaPrincipal" value="1" />
+                                <label class="form-check-label" for="paginaPrincipal">Pagina principal</label>
                             </div>
                         </div>
                     </div>

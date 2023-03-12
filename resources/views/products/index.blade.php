@@ -50,6 +50,9 @@
                 </div>
                 <div class="col-8 text-center offset-2 offset-lg-0">
                     <div class="row" id="product-container">
+                        @if (count($products) < 1)
+                            <p class="text-center fs-3 text-danger">No hay productos disponibles en esta categoria</p>
+                        @endif
                         @foreach ($products as $product)
                             <div class="col-lg-3 col-md-12 mb-3 product-order-by d-flex flex-column" data-product-id="{{$product->id}}"
                                  data-product-price="{{$product->price}}">
@@ -67,12 +70,7 @@
                                             </div>
                                         @endif
                                         <div class="card-body">
-                                            <h5 class="card-title "><strong>{{$product->name}}</strong></h5>
-                                            <p class="card-text text-capitalize">
-                                                @foreach ($product->categories as $pCategory)
-                                                    {{$categories->find($pCategory->category_id)->name}}
-                                                @endforeach
-                                            </p>
+                                            <h5 class="card-title fs-6"><strong>{{$product->name}}</strong></h5>
                                             <h6 class="mb-3 act-price fs-5 mt-auto">{{$product->price}}€</h6>
                                         </div>
                                     </a>

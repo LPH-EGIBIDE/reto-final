@@ -84,8 +84,8 @@ class OrderController extends Controller
             'id' => $order->id,
             'user_id' => $order->user_id,
             'discount_code_id' => $order->discount_code_id,
-            'subtotal' => $order->subtotal,
-            'total' => $order->total,
+            'subtotal' => round($order->subtotal, 2),
+            'total' => round($order->total, 2),
             'status' => $order->status,
             'date' => Carbon::parse($order->date)->format('d/m/Y'),
             'discount_code' => $order->discountCode->code ?? null,
@@ -97,7 +97,7 @@ class OrderController extends Controller
                 'name' => $orderDetail->product->name,
                 'price' => $orderDetail->product->price,
                 'quantity' => $orderDetail->quantity,
-                'total' => $orderDetail->quantity * $orderDetail->product->price
+                'total' => round($orderDetail->quantity * $orderDetail->product->price, 2)
             ];
         }
 

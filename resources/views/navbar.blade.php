@@ -1,9 +1,9 @@
 <header>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg py-3 navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg py-2 navbar-light bg-light">
         <!-- Container wrapper -->
-        <div class="container-fluid">
+        <div class="container">
             <!-- Toggle button -->
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
@@ -13,7 +13,7 @@
                 <!-- Navbar brand -->
                 <a class="navbar-brand mt-2 mt-lg-0 d-none d-lg-block" href="{{route('home')}}">
                     <!-- Image Logo -->
-                    <img src="{{Vite::asset('resources/images/logo_egibide.png')}}" height="42" alt="" loading="lazy" />
+                    <img src="{{Vite::asset('resources/images/logo_egibide.png')}}" height="64" alt="" loading="lazy" />
                 </a>
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">

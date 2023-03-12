@@ -23,8 +23,8 @@
                 <div class="d-flex align-items-center">
                     <img src="{{"https://www.gravatar.com/avatar/" . md5( strtolower( trim( auth()->user()->email ) ) ) . "&s=300&time=".time()}}" class="rounded-circle" height="42" alt="" loading="lazy" />
                     <div class="ms-3">
-                    <p class="fw-bold mb-1">{{$order->user->name}}</p>
-                    <p class="text-muted mb-0">{{$order->user->email}}</p>
+                    <p class="fw-bold mb-1">Pedido #{{$order->id}}</p>
+                    <p class="text-muted mb-0">Realizado el {{Illuminate\Support\Carbon::parse($order->created_at)->format('d/m/Y')}}</p>
                     </div>
                 </div>
                 </td>
@@ -35,8 +35,8 @@
                     <span class="badge badge-{{$statuses[$order->status][1]}} rounded-pill d-inline">{{$statuses[$order->status][0]}}</span>
                 </td>
                 <td>
-                    @if ($order->discount)
-                        <span class="badge badge-success rounded-pill d-inline">{{$order->discount}}</span>
+                    @if ($order->discount_code_id)
+                        <span class="badge badge-success rounded-pill d-inline">{{$order->discountCode->code}}</span>
                     @else
                         <span class="badge badge-danger rounded-pill d-inline">Sin descuento</span>
                     @endif
