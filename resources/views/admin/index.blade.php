@@ -34,7 +34,7 @@
                     <span class="card-title text-primary m-0 fs-2 fw-bold">Pedidos Semanales</span>
                 </div>
                 <div class="card-body my-3">
-                    <doughnut-chart></doughnut-chart>
+                    <pedidos-chart></pedidos-chart>
                 </div>
             </div>
     </div>
